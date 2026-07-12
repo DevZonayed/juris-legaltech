@@ -1,0 +1,25 @@
+# Maestro defaults
+node_modules/
+.env
+.env.local
+.env.*.local
+.DS_Store
+dist/
+build/
+.turbo/
+.next/
+out/
+coverage/
+*.log
+
+# Deployment repo — exclude internal/large assets not needed to build the app
+/data
+/docs
+/.continuum
+/.claude
+/.mcp.json
+tsconfig.tsbuildinfo
+.dokploy_*
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat

@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Juris · বাংলাদেশ আইন — Bangladesh Legal-Tech Design System</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230E7C5A'/%3E%3Cpath d='M20 9v21M12 15h16M20 9l-8 6c0 4 3.4 6.5 8 6.5M20 9l8 6c0 4-3.4 6.5-8 6.5' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13 31h14' stroke='%23E7BC63' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='20' cy='9' r='2.2' fill='%23E7BC63'/%3E%3C/svg%3E" />
+<meta name="description" content="Verified Bangladesh law, answered. AI legal assistant, full law database and verified lawyers. Design system & key-screen blueprint by NexaLance." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================= TOKENS */
+:root{
+  --paper:#F6F4ED; --surface:#FFFFFF; --surface-2:#F1EEE5; --surface-3:#EBE7DB;
+  --ink:#10221C; --ink-2:#3C4C45; --muted:#6E7A72; --faint:#9AA49D;
+  --line:#E3DFD3; --line-2:#D5D0C1;
+  --primary:#0E7C5A; --primary-deep:#064E3B; --primary-press:#0A6449; --primary-soft:#E2F0E9; --on-primary:#FFFFFF;
+  --gold:#9C7218; --gold-2:#B8892F; --gold-soft:#F4E9CD;
+  --danger:#B23A2B; --danger-soft:#FBE7E2;
+  --info:#1F6FEB; --info-soft:#E4EDFD;
+  --warn:#B5730B;
+  --user-bubble:#0E7C5A; --user-ink:#FFFFFF;
+  --shadow-sm:0 1px 2px rgba(16,34,28,.06),0 1px 3px rgba(16,34,28,.05);
+  --shadow-md:0 6px 16px -6px rgba(16,34,28,.14),0 3px 8px -4px rgba(16,34,28,.10);
+  --shadow-lg:0 24px 48px -18px rgba(16,34,28,.26),0 8px 20px -12px rgba(16,34,28,.16);
+  --ring:0 0 0 3px rgba(14,124,90,.30);
+  --r-xs:7px; --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:28px; --r-pill:999px;
+  --f-disp:"Fraunces",Georgia,serif;
+  --f-ui:"Plus Jakarta Sans",system-ui,sans-serif;
+  --f-bn:"Noto Sans Bengali","Plus Jakarta Sans",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --maxw:1180px;
+}
+[data-theme="dark"]{
+  --paper:#081410; --surface:#0F211B; --surface-2:#14281F; --surface-3:#1B3227;
+  --ink:#EAF2ED; --ink-2:#BDCabf; --ink-2:#B9C7BF; --muted:#8B988F; --faint:#66756C;
+  --line:#20342A; --line-2:#294338;
+  --primary:#37C892; --primary-deep:#0E7C5A; --primary-press:#2BB07E; --primary-soft:#123329; --on-primary:#05130D;
+  --gold:#E7BC63; --gold-2:#D9A94A; --gold-soft:#2A2312;
+  --danger:#F0806E; --danger-soft:#33201C;
+  --info:#6AA6FF; --info-soft:#152437;
+  --warn:#E0A94A;
+  --user-bubble:#37C892; --user-ink:#05130D;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4);
+  --shadow-md:0 8px 20px -8px rgba(0,0,0,.55);
+  --shadow-lg:0 28px 56px -20px rgba(0,0,0,.7);
+  --ring:0 0 0 3px rgba(55,200,146,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-ui);
+  font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  transition:background .4s ease,color .4s ease;
+}
+body[data-lang="bn"]{font-family:var(--f-bn)}
+h1,h2,h3,h4{font-family:var(--f-disp);font-weight:600;line-height:1.1;letter-spacing:-.01em;margin:0}
+body[data-lang="bn"] h1,body[data-lang="bn"] h2,body[data-lang="bn"] h3{font-family:var(--f-bn);letter-spacing:0;line-height:1.35}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:none;box-shadow:var(--ring);border-radius:8px}
+img{max-width:100%;display:block}
+.bn{font-family:var(--f-bn)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+/* language switch visibility */
+.lang-en,.lang-bn{display:inline}
+body[data-lang="en"] .lang-bn{display:none}
+body[data-lang="bn"] .lang-en{display:none}
+.block.lang-en,.block.lang-bn{display:block}
+body[data-lang="en"] .block.lang-bn{display:none}
+body[data-lang="bn"] .block.lang-en{display:none}
+
+/* ============================================================= LAYOUT */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+section{padding:76px 0;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--primary);font-family:var(--f-ui)}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--gold-2);border-radius:2px}
+.sec-head{max-width:640px;margin-bottom:40px}
+.sec-head h2{font-size:clamp(28px,4vw,42px);margin:14px 0 12px}
+.sec-head p{color:var(--muted);font-size:17px}
+.grid{display:grid;gap:20px}
+
+/* ============================================================= TOPBAR */
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 82%,transparent);
+  backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:18px;height:66px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:17px;letter-spacing:-.01em}
+.brand .mark{width:34px;height:34px;flex:none}
+.brand small{display:block;font-weight:500;font-size:11px;color:var(--muted);letter-spacing:.02em}
+.nav-pills{display:flex;gap:4px;margin-left:8px}
+.nav-pills a{font-size:13.5px;font-weight:600;color:var(--ink-2);padding:8px 12px;border-radius:var(--r-pill);transition:.18s}
+.nav-pills a:hover{background:var(--surface-2);color:var(--ink)}
+.top-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
+.toggle{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 12px;border:1px solid var(--line-2);
+  background:var(--surface);color:var(--ink);border-radius:var(--r-pill);font-family:var(--f-ui);font-weight:600;
+  font-size:13px;cursor:pointer;transition:.18s}
+.toggle:hover{border-color:var(--primary);color:var(--primary)}
+.seg{display:inline-flex;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-pill);padding:3px}
+.seg button{border:0;background:transparent;color:var(--muted);font-family:var(--f-ui);font-weight:700;font-size:12.5px;
+  padding:6px 12px;border-radius:var(--r-pill);cursor:pointer;transition:.18s}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--primary);box-shadow:var(--shadow-sm)}
+@media(max-width:940px){.nav-pills{display:none}}
+
+/* ============================================================= HERO */
+.hero{padding-top:64px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(38px,6vw,68px);letter-spacing:-.03em;font-weight:600}
+.hero h1 em{font-style:normal;color:var(--primary);position:relative}
+.hero .lede{font-size:19px;color:var(--ink-2);margin:22px 0 14px;max-width:520px}
+.hero .bn-lede{font-family:var(--f-bn);font-size:16px;color:var(--muted);margin-bottom:28px;max-width:520px;line-height:1.7}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.trust-row{display:flex;gap:22px;margin-top:34px;flex-wrap:wrap}
+.trust-row .ti{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--ink-2);font-weight:600}
+.trust-row svg{color:var(--primary)}
+.hero-visual{position:relative;border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--line);
+  box-shadow:var(--shadow-lg);background:var(--surface)}
+.hero-visual img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/11}
+.hero-visual .float{position:absolute;background:color-mix(in srgb,var(--surface) 88%,transparent);
+  backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:var(--r-md);padding:12px 14px;box-shadow:var(--shadow-md);
+  font-size:12.5px;font-weight:600}
+.float.a{left:18px;bottom:18px;display:flex;align-items:center;gap:10px}
+.float.b{right:18px;top:18px;display:flex;align-items:center;gap:8px;color:var(--primary)}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:34px}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:48px;padding:0 22px;border-radius:var(--r-pill);
+  font-family:var(--f-ui);font-weight:700;font-size:15px;cursor:pointer;border:1px solid transparent;transition:.18s;white-space:nowrap}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--primary);color:var(--on-primary);box-shadow:0 8px 18px -8px color-mix(in srgb,var(--primary) 70%,transparent)}
+.btn-primary:hover{background:var(--primary-press);transform:translateY(-1px)}
+.btn-ghost{background:var(--surface);color:var(--ink);border-color:var(--line-2)}
+.btn-ghost:hover{border-color:var(--primary);color:var(--primary)}
+.btn-gold{background:linear-gradient(180deg,var(--gold-2),var(--gold));color:#fff}
+.btn-sm{height:38px;padding:0 15px;font-size:13.5px}
+.btn-block{width:100%}
+
+/* ============================================================= FOUNDATIONS */
+.tokens-grid{grid-template-columns:repeat(2,1fr)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px}
+.panel h3{font-size:19px;margin-bottom:4px}
+.panel .sub{color:var(--muted);font-size:13.5px;margin-bottom:20px}
+.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.sw{border-radius:var(--r-sm);border:1px solid var(--line);overflow:hidden}
+.sw .chip{height:52px}
+.sw .meta{padding:8px 9px;font-size:11px}
+.sw .meta b{display:block;font-weight:700;font-size:12px}
+.sw .meta span{color:var(--muted);font-family:var(--f-mono);font-size:10.5px}
+.type-row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.type-row:last-child{border-bottom:0}
+.type-row .lbl{font-family:var(--f-mono);font-size:11px;color:var(--muted);white-space:nowrap}
+.d1{font-family:var(--f-disp);font-size:40px;font-weight:600}
+.d2{font-family:var(--f-disp);font-size:28px;font-weight:600}
+.d3{font-size:20px;font-weight:700}
+.d4{font-size:16px;font-weight:600}
+.d5{font-size:13px;font-weight:600;color:var(--muted)}
+.scale-strip{display:flex;gap:8px;align-items:flex-end;margin-top:6px}
+.scale-strip .u{background:var(--primary-soft);border:1px solid var(--line);border-radius:6px 6px 0 0;position:relative;flex:1;text-align:center}
+.scale-strip .u span{position:absolute;top:-18px;left:0;right:0;font-family:var(--f-mono);font-size:10px;color:var(--muted)}
+.scale-strip .u b{display:block;font-size:10px;color:var(--primary);font-family:var(--f-mono);padding:3px 0}
+
+/* ============================================================= COMPONENTS gallery */
+.comp-grid{grid-template-columns:repeat(3,1fr)}
+.comp{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:20px;display:flex;flex-direction:column;gap:14px}
+.comp .cn{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.chip-cite{display:inline-flex;align-items:center;gap:7px;background:var(--gold-soft);color:var(--gold);border:1px solid color-mix(in srgb,var(--gold) 30%,transparent);
+  padding:5px 11px;border-radius:var(--r-pill);font-family:var(--f-mono);font-size:12px;font-weight:600;cursor:pointer;transition:.15s}
+.chip-cite:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.chip-cite svg{width:13px;height:13px}
+.disclaimer{display:flex;gap:10px;background:var(--surface-2);border:1px solid var(--line);border-left:3px solid var(--gold-2);
+  border-radius:var(--r-sm);padding:11px 13px;font-size:12.5px;color:var(--ink-2);line-height:1.5}
+.disclaimer svg{width:16px;height:16px;color:var(--gold-2);flex:none;margin-top:2px}
+.badge-verified{display:inline-flex;align-items:center;gap:6px;background:var(--primary-soft);color:var(--primary-deep);
+  padding:4px 10px;border-radius:var(--r-pill);font-size:12px;font-weight:700}
+[data-theme="dark"] .badge-verified{color:var(--primary)}
+.badge-verified svg{width:14px;height:14px}
+.stars{display:inline-flex;gap:2px;color:var(--gold-2)}
+.stars svg{width:16px;height:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12.5px;font-weight:700;color:var(--ink-2)}
+.field .inp{height:44px;border:1px solid var(--line-2);background:var(--surface);border-radius:var(--r-sm);padding:0 13px;
+  font-family:var(--f-ui);font-size:14px;color:var(--ink);display:flex;align-items:center}
+.field .hint{font-size:11.5px;color:var(--muted)}
+.searchbar{display:flex;align-items:center;gap:10px;height:50px;border:1px solid var(--line-2);background:var(--surface);
+  border-radius:var(--r-pill);padding:0 8px 0 16px}
+.searchbar svg{width:18px;height:18px;color:var(--muted);flex:none}
+.searchbar .ph{color:var(--faint);font-size:14px;flex:1}
+.mic{width:36px;height:36px;border-radius:50%;background:var(--primary-soft);color:var(--primary);display:grid;place-items:center;flex:none}
+.otp{display:flex;gap:8px}
+.otp .cell{width:42px;height:50px;border:1.5px solid var(--line-2);border-radius:var(--r-sm);display:grid;place-items:center;
+  font-family:var(--f-mono);font-size:20px;font-weight:600}
+.otp .cell.active{border-color:var(--primary);box-shadow:var(--ring)}
+.tabs{display:flex;gap:2px;background:var(--surface-2);border-radius:var(--r-pill);padding:4px;width:max-content}
+.tabs button{border:0;background:transparent;font-family:var(--f-ui);font-weight:700;font-size:13px;color:var(--muted);
+  padding:7px 14px;border-radius:var(--r-pill);cursor:pointer}
+.tabs button.on{background:var(--surface);color:var(--primary);box-shadow:var(--shadow-sm)}
+.toast{display:flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);padding:11px 14px;border-radius:var(--r-sm);font-size:13px;font-weight:600}
+.toast .dot{width:8px;height:8px;border-radius:50%;background:var(--primary)}
+.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;color:#fff}
+.stepper{display:flex;align-items:center;gap:0;width:100%}
+.stepper .st{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;color:var(--muted)}
+.stepper .dot{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--surface-2);
+  border:1.5px solid var(--line-2);font-size:11px}
+.stepper .st.done .dot{background:var(--primary);border-color:var(--primary);color:#fff}
+.stepper .st.now .dot{border-color:var(--primary);color:var(--primary)}
+.stepper .bar{height:2px;flex:1;background:var(--line-2);margin:0 6px}
+.stepper .bar.fill{background:var(--primary)}
+@media(max-width:900px){.comp-grid,.tokens-grid{grid-template-columns:1fr}.swatches{grid-template-columns:repeat(4,1fr)}}
+
+/* ============================================================= DEVICE FRAMES */
+.browser{border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:var(--surface);box-shadow:var(--shadow-lg)}
+.browser .bar{display:flex;align-items:center;gap:8px;padding:11px 14px;background:var(--surface-2);border-bottom:1px solid var(--line)}
+.browser .dots{display:flex;gap:6px}
+.browser .dots i{width:11px;height:11px;border-radius:50%;background:var(--line-2)}
+.browser .dots i:nth-child(1){background:#E4675B}.browser .dots i:nth-child(2){background:#E4B453}.browser .dots i:nth-child(3){background:#5FBF7E}
+.browser .url{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-pill);height:30px;
+  display:flex;align-items:center;gap:8px;padding:0 12px;font-size:12px;color:var(--muted);font-family:var(--f-mono)}
+.browser .url svg{width:12px;height:12px;color:var(--primary)}
+.screen-label{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.screen-label .id{font-family:var(--f-mono);font-size:11px;font-weight:600;background:var(--ink);color:var(--paper);padding:3px 8px;border-radius:6px}
+.screen-label h3{font-size:18px}
+.screen-label .tag{margin-left:auto;font-size:11px;font-weight:700;padding:3px 9px;border-radius:var(--r-pill);
+  background:var(--primary-soft);color:var(--primary-deep)}
+[data-theme="dark"] .screen-label .tag{color:var(--primary)}
+.screen-label .tag.p2{background:var(--gold-soft);color:var(--gold)}
+
+/* ---------- AI ASSISTANT chat ---------- */
+.assist{display:grid;grid-template-columns:210px 1fr;min-height:560px}
+.assist .side{border-right:1px solid var(--line);background:var(--surface-2);padding:16px 14px;display:flex;flex-direction:column;gap:6px}
+.assist .side .new{margin-bottom:8px}
+.assist .side .sh{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:14px 6px 6px}
+.hist{padding:9px 10px;border-radius:var(--r-sm);font-size:12.5px;color:var(--ink-2);cursor:pointer;display:flex;gap:8px;align-items:center}
+.hist:hover{background:var(--surface)}
+.hist.on{background:var(--surface);color:var(--ink);font-weight:600;box-shadow:var(--shadow-sm)}
+.hist svg{width:14px;height:14px;color:var(--muted);flex:none}
+.assist .conv{display:flex;flex-direction:column}
+.conv-head{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--line)}
+.conv-head .t{font-weight:700;font-size:14px}
+.conv-head .lawyer-cta{margin-left:auto}
+.thread{flex:1;padding:22px 20px;display:flex;flex-direction:column;gap:18px;background:
+  radial-gradient(circle at 100% 0,color-mix(in srgb,var(--primary-soft) 55%,transparent),transparent 42%)}
+.msg{display:flex;gap:12px;max-width:88%}
+.msg.user{align-self:flex-end;flex-direction:row-reverse}
+.msg .ava{width:32px;height:32px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:800;font-size:12px}
+.msg.ai .ava{background:var(--primary);color:#fff}
+.msg.user .ava{background:var(--surface-3);color:var(--ink)}
+.bubble{padding:14px 16px;border-radius:16px;font-size:14px;line-height:1.6}
+.msg.user .bubble{background:var(--user-bubble);color:var(--user-ink);border-bottom-right-radius:5px;font-weight:500}
+.msg.ai .bubble{background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:5px}
+.bubble .cites{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 4px}
+.bubble .ai-label{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;color:var(--primary);margin-bottom:8px}
+.bubble .ai-label svg{width:14px;height:14px}
+.bubble ul{margin:8px 0 0;padding-left:18px;color:var(--ink-2);font-size:13.5px}
+.bubble li{margin-bottom:4px}
+.bubble .disclaimer{margin-top:12px}
+.feedback{display:flex;align-items:center;gap:6px;margin-top:12px;padding-top:11px;border-top:1px solid var(--line)}
+.fbtn{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--surface-2);display:grid;place-items:center;cursor:pointer;color:var(--muted)}
+.fbtn:hover{color:var(--primary);border-color:var(--primary)}
+.fbtn svg{width:15px;height:15px}
+.fb-spacer{flex:1}
+.typing{display:flex;gap:4px;padding:14px 16px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--faint);animation:blink 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.suggests{display:flex;gap:8px;flex-wrap:wrap}
+.suggests .sg{border:1px solid var(--line-2);background:var(--surface);border-radius:var(--r-pill);padding:8px 13px;font-size:12.5px;font-weight:600;color:var(--ink-2);cursor:pointer}
+.suggests .sg:hover{border-color:var(--primary);color:var(--primary)}
+.composer{padding:14px 18px;border-top:1px solid var(--line);display:flex;align-items:center;gap:10px;background:var(--surface)}
+.composer .box{flex:1;height:48px;border:1px solid var(--line-2);border-radius:var(--r-pill);display:flex;align-items:center;padding:0 6px 0 16px;gap:8px}
+.composer .box .ph{flex:1;color:var(--faint);font-size:14px}
+.composer .send{width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;border:0;cursor:pointer}
+@media(max-width:820px){.assist{grid-template-columns:1fr}.assist .side{display:none}}
+
+/* no-verified card */
+.noverify{border:1px dashed var(--line-2);background:var(--surface-2);border-radius:var(--r-md);padding:18px;margin-top:6px}
+.noverify .h{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14px;color:var(--warn);margin-bottom:8px}
+.noverify .h svg{width:18px;height:18px}
+.noverify p{font-size:13.5px;color:var(--ink-2);margin-bottom:14px}
+.noverify .acts{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ---------- LAW section detail ---------- */
+.law{display:grid;grid-template-columns:1fr 300px;gap:0}
+.law .main{padding:26px 28px;border-right:1px solid var(--line)}
+.crumb{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:16px;flex-wrap:wrap}
+.crumb svg{width:12px;height:12px;opacity:.6}
+.crumb .cur{color:var(--primary)}
+.law h2.title{font-size:26px;margin-bottom:6px}
+.law .meta-line{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-bottom:18px}
+.law .meta-line b{color:var(--ink-2)}
+.law .lang-tabs{margin-bottom:18px}
+.law .sec-body{font-size:15px;line-height:1.75;color:var(--ink);border-left:3px solid var(--primary-soft);padding-left:16px}
+.law .sec-body.bnbody{font-family:var(--f-bn);line-height:1.95}
+.callout{border-radius:var(--r-md);padding:16px;margin-top:20px;border:1px solid var(--line)}
+.callout .ch{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px;margin-bottom:8px}
+.callout .ch svg{width:16px;height:16px}
+.callout.plain{background:var(--info-soft);border-color:color-mix(in srgb,var(--info) 22%,transparent)}
+.callout.plain .ch{color:var(--info)}
+.callout.example{background:var(--gold-soft);border-color:color-mix(in srgb,var(--gold) 25%,transparent)}
+.callout.example .ch{color:var(--gold)}
+.callout p{font-size:13.5px;color:var(--ink-2);line-height:1.6}
+.law .aside{padding:22px 20px;background:var(--surface-2)}
+.law .aside .sh{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:0 0 12px}
+.rel{display:block;padding:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);margin-bottom:9px}
+.rel .rt{font-weight:700;font-size:13px;margin-bottom:3px}
+.rel .rd{font-size:11.5px;color:var(--muted);font-family:var(--f-mono)}
+.tool-row{display:flex;gap:8px;margin:20px 0 0}
+.tool-row .tb{flex:1;height:40px;border:1px solid var(--line-2);background:var(--surface);border-radius:var(--r-sm);
+  display:flex;align-items:center;justify-content:center;gap:7px;font-size:12.5px;font-weight:700;cursor:pointer;color:var(--ink-2)}
+.tool-row .tb:hover{border-color:var(--primary);color:var(--primary)}
+.tool-row .tb svg{width:15px;height:15px}
+@media(max-width:820px){.law{grid-template-columns:1fr}.law .main{border-right:0;border-bottom:1px solid var(--line)}}
+
+/* ---------- SEARCH results ---------- */
+.search-screen{padding:22px 24px}
+.search-screen .filters{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 20px}
+.fpill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line-2);background:var(--surface);
+  border-radius:var(--r-pill);padding:7px 13px;font-size:12.5px;font-weight:600;color:var(--ink-2);cursor:pointer}
+.fpill.on{background:var(--primary);color:#fff;border-color:var(--primary)}
+.fpill svg{width:13px;height:13px}
+.res-meta{font-size:12.5px;color:var(--muted);margin-bottom:12px}
+.res{display:block;padding:16px;border:1px solid var(--line);border-radius:var(--r-md);margin-bottom:12px;background:var(--surface);transition:.15s}
+.res:hover{border-color:var(--primary);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+.res .rtop{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.res .cat{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--primary)}
+.res .sec-no{margin-left:auto;font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.res h4{font-size:16px;font-weight:700;font-family:var(--f-ui);margin-bottom:5px}
+.res p{font-size:13px;color:var(--ink-2);line-height:1.55}
+.res mark{background:var(--gold-soft);color:var(--gold);padding:1px 3px;border-radius:3px;font-weight:600}
+
+/* ---------- PHONES ---------- */
+.phones{display:flex;gap:26px;overflow-x:auto;padding:8px 4px 20px;scroll-snap-type:x mandatory}
+.phone{flex:none;width:290px;scroll-snap-align:center;border-radius:42px;background:var(--ink);padding:11px;box-shadow:var(--shadow-lg)}
+.phone .glass{background:var(--paper);border-radius:32px;overflow:hidden;position:relative;height:600px;display:flex;flex-direction:column}
+.phone .notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:110px;height:26px;background:var(--ink);border-radius:16px;z-index:5}
+.p-status{display:flex;align-items:center;justify-content:space-between;padding:14px 20px 6px;font-size:12px;font-weight:700}
+.p-status .r{display:flex;gap:6px;align-items:center}
+.p-head{padding:6px 18px 12px;display:flex;align-items:center;gap:10px}
+.p-head .pt{font-family:var(--f-disp);font-size:20px;font-weight:600}
+.p-head .pt small{display:block;font-family:var(--f-ui);font-size:11px;font-weight:600;color:var(--muted)}
+.p-head .ico{margin-left:auto;width:34px;height:34px;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center}
+.p-body{flex:1;overflow:hidden;padding:4px 16px}
+.p-tabbar{display:flex;background:var(--surface);border-top:1px solid var(--line);padding:8px 6px 10px}
+.p-tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;font-weight:700;color:var(--faint)}
+.p-tab svg{width:21px;height:21px}
+.p-tab.on{color:var(--primary)}
+.p-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:14px;margin-bottom:11px}
+.p-greet{font-family:var(--f-disp);font-size:22px;font-weight:600;margin:6px 0 2px}
+.p-sub{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.ask-cta{background:linear-gradient(135deg,var(--primary),var(--primary-deep));color:#fff;border-radius:var(--r-md);padding:16px;margin-bottom:14px;position:relative;overflow:hidden}
+.ask-cta .k{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.ask-cta .q{font-family:var(--f-disp);font-size:17px;font-weight:600;margin:5px 0 12px;line-height:1.25}
+.ask-cta .mini{background:rgba(255,255,255,.16);border-radius:var(--r-pill);height:38px;display:flex;align-items:center;gap:8px;padding:0 8px 0 14px;font-size:12.5px}
+.ask-cta .mini .mm{margin-left:auto;width:28px;height:28px;border-radius:50%;background:#fff;color:var(--primary);display:grid;place-items:center}
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
+.quick .q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px;font-size:12px;font-weight:700}
+.quick .q .ic{width:30px;height:30px;border-radius:8px;background:var(--primary-soft);color:var(--primary);display:grid;place-items:center;margin-bottom:9px}
+.quick .q .ic svg{width:16px;height:16px}
+.sh-row{display:flex;align-items:center;justify-content:space-between;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin:2px 2px 10px}
+.mchat{display:flex;flex-direction:column;gap:12px}
+.mmsg{max-width:82%;padding:11px 13px;border-radius:14px;font-size:12.5px;line-height:1.5}
+.mmsg.u{align-self:flex-end;background:var(--user-bubble);color:var(--user-ink);border-bottom-right-radius:4px}
+.mmsg.a{align-self:flex-start;background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:4px}
+.mmsg .mc{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.mmsg .chip-cite{padding:3px 8px;font-size:10.5px}
+.mmsg .disclaimer{margin-top:9px;font-size:10.5px;padding:8px 9px}
+.cat-list .cl{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px;margin-bottom:9px}
+.cat-list .cl .ci{width:36px;height:36px;border-radius:9px;display:grid;place-items:center;flex:none}
+.cat-list .cl .ct{font-weight:700;font-size:13px}
+.cat-list .cl .cc{font-size:11px;color:var(--muted)}
+.cat-list .cl .cn{margin-left:auto;font-family:var(--f-mono);font-size:11px;color:var(--faint)}
+
+/* ---------- ADMIN ---------- */
+.admin{display:grid;grid-template-columns:200px 1fr;min-height:600px;font-size:14px}
+.admin .anav{background:var(--surface-2);border-right:1px solid var(--line);padding:18px 12px}
+.admin .anav .ab{display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px;padding:0 6px 16px}
+.admin .anav .ni{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:var(--r-sm);font-size:12.5px;font-weight:600;color:var(--ink-2);margin-bottom:2px;cursor:pointer}
+.admin .anav .ni svg{width:16px;height:16px;color:var(--muted)}
+.admin .anav .ni.on{background:var(--surface);color:var(--primary);box-shadow:var(--shadow-sm)}
+.admin .anav .ni.on svg{color:var(--primary)}
+.admin .amain{padding:22px 24px;overflow:hidden}
+.amain .ahead{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.amain .ahead h3{font-size:20px}
+.amain .ahead .badge2fa{margin-left:auto;font-size:11px;font-weight:700;color:var(--primary);background:var(--primary-soft);padding:5px 10px;border-radius:var(--r-pill)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:15px}
+.kpi .kl{font-size:11.5px;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:6px}
+.kpi .kv{font-size:26px;font-weight:800;font-family:var(--f-ui);margin:7px 0 3px;letter-spacing:-.02em}
+.kpi .kd{font-size:11px;font-weight:700}
+.kpi .kd.up{color:var(--primary)}.kpi .kd.down{color:var(--danger)}
+.kpi .kd.warn{color:var(--warn)}
+.admin-2col{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}
+.card2{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:18px}
+.card2 .c2h{display:flex;align-items:center;margin-bottom:14px}
+.card2 .c2h b{font-size:14px}
+.card2 .c2h .lnk{margin-left:auto;font-size:12px;color:var(--primary);font-weight:700}
+.chart{height:150px;display:flex;align-items:flex-end;gap:9px;padding-top:10px}
+.chart .col{flex:1;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px}
+.chart .col .b{width:100%;background:linear-gradient(180deg,var(--primary),var(--primary-deep));border-radius:6px 6px 0 0;position:relative}
+.chart .col .b .v{position:absolute;top:-17px;left:0;right:0;text-align:center;font-size:10px;font-weight:700;color:var(--muted);font-family:var(--f-mono)}
+.chart .col .x{font-size:10px;color:var(--faint);font-weight:600}
+.queue .qi{display:flex;align-items:center;gap:11px;padding:10px 0;border-bottom:1px solid var(--line)}
+.queue .qi:last-child{border-bottom:0}
+.queue .qi .qa{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:12px;color:#fff;flex:none}
+.queue .qi .qt{font-weight:700;font-size:12.5px}
+.queue .qi .qs{font-size:11px;color:var(--muted)}
+.pillstat{margin-left:auto;font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:var(--r-pill)}
+.pillstat.pending{background:var(--gold-soft);color:var(--gold)}
+.pillstat.flag{background:var(--danger-soft);color:var(--danger)}
+.pillstat.ok{background:var(--primary-soft);color:var(--primary-deep)}
+[data-theme="dark"] .pillstat.ok{color:var(--primary)}
+table.dt{width:100%;border-collapse:collapse;font-size:12.5px}
+table.dt th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);font-weight:700;padding:8px 10px;border-bottom:1px solid var(--line)}
+table.dt td{padding:11px 10px;border-bottom:1px solid var(--line)}
+table.dt tr:last-child td{border-bottom:0}
+table.dt .u{display:flex;align-items:center;gap:9px;font-weight:600}
+@media(max-width:820px){.admin{grid-template-columns:1fr}.admin .anav{display:none}.kpis{grid-template-columns:repeat(2,1fr)}.admin-2col{grid-template-columns:1fr}}
+
+/* ---------- STATE MATRIX ---------- */
+.states{grid-template-columns:repeat(4,1fr)}
+.state{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
+.state .sh{padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:7px}
+.state .sb{padding:18px 14px;min-height:150px;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;text-align:center}
+.sk{width:100%;height:12px;border-radius:6px;background:linear-gradient(90deg,var(--surface-2) 25%,var(--surface-3) 37%,var(--surface-2) 63%);
+  background-size:400% 100%;animation:shimmer 1.4s infinite}
+.sk.w70{width:70%}.sk.w45{width:45%}.sk.big{height:60px;border-radius:10px}
+@keyframes shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
+.state .emptyico{width:52px;height:52px;border-radius:14px;background:var(--surface-2);display:grid;place-items:center;color:var(--muted)}
+.state .emptyico svg{width:26px;height:26px}
+.state p{font-size:12.5px;color:var(--muted)}
+.state .st-t{font-size:14px;font-weight:700;color:var(--ink)}
+@media(max-width:900px){.states{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- INVENTORY ---------- */
+.inv{grid-template-columns:repeat(2,1fr)}
+.invcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:20px}
+.invcard h4{font-family:var(--f-ui);font-size:14px;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:9px}
+.invcard .n{margin-left:auto;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.invcard ul{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-wrap:wrap;gap:6px}
+.invcard li{font-size:11.5px;font-weight:600;background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:4px 8px;color:var(--ink-2)}
+.invcard li.p2{border-color:color-mix(in srgb,var(--gold) 30%,transparent);background:var(--gold-soft);color:var(--gold)}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--line);padding:44px 0 60px;margin-top:20px}
+.foot{display:flex;align-items:flex-start;gap:30px;flex-wrap:wrap}
+.foot .fb{max-width:340px}
+.foot .fb p{color:var(--muted);font-size:13px;margin-top:12px;line-height:1.6}
+.foot .legal{margin-left:auto;font-size:12px;color:var(--muted);text-align:right}
+.foot .legal a{color:var(--ink-2);font-weight:600;margin-left:14px}
+.divider{height:1px;background:var(--line);margin:40px 0 0}
+
+.stat-band{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.stat-band .s{flex:1;min-width:150px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:16px 18px}
+.stat-band .s b{font-family:var(--f-disp);font-size:30px;font-weight:600;display:block;color:var(--primary)}
+.stat-band .s span{font-size:12.5px;color:var(--muted);font-weight:600}
+
+/* ---------- MOCKUP GALLERY (image-first) ---------- */
+.mock-band{background:
+  linear-gradient(180deg,color-mix(in srgb,var(--primary-soft) 45%,transparent),transparent 60%);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.mock-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:26px}
+.mock{margin:0}
+.mock.wide{grid-column:1/-1}
+.mock .browser img{width:100%;display:block}
+.mock figcaption{display:flex;align-items:center;gap:10px;margin-top:13px;font-size:13.5px;font-weight:700;color:var(--ink)}
+.mock figcaption .id{font-family:var(--f-mono);font-size:11px;font-weight:600;background:var(--ink);color:var(--paper);padding:3px 8px;border-radius:6px}
+.mock figcaption .cap-sub{font-weight:500;color:var(--muted);font-size:12.5px}
+.mock figcaption .tag{margin-left:auto;font-size:11px;font-weight:700;padding:3px 9px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary-deep)}
+[data-theme="dark"] .mock figcaption .tag{color:var(--primary)}
+.mock figcaption .tag.p2{background:var(--gold-soft);color:var(--gold)}
+.mock figcaption .tag.tadm{background:var(--info-soft);color:var(--info)}
+.mock-phones{display:flex;gap:34px;flex-wrap:wrap;justify-content:center;padding:6px 0 0}
+.mock-phones figure{margin:0;width:270px;text-align:center}
+.mock-phones img{width:100%;border-radius:34px;box-shadow:var(--shadow-lg);display:block;border:1px solid var(--line)}
+.mock-phones figcaption{margin-top:16px;font-size:13.5px;font-weight:700;color:var(--ink);display:flex;align-items:center;justify-content:center;gap:9px}
+.mock-phones figcaption .id{font-family:var(--f-mono);font-size:11px;font-weight:600;background:var(--ink);color:var(--paper);padding:3px 8px;border-radius:6px}
+.mock-legend{display:inline-flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-pill);padding:8px 16px;font-size:12.5px;font-weight:600;color:var(--ink-2);margin-top:4px}
+.mock-legend svg{width:15px;height:15px;color:var(--gold-2)}
+@media(max-width:820px){.mock-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-lang="en">
+
+<!-- ===================================================== TOPBAR -->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect width="40" height="40" rx="11" fill="var(--primary)"/>
+        <path d="M20 8v22M12 14h16M20 8l-8 6c0 4.4 3.6 7 8 7M20 8l8 6c0 4.4-3.6 7-8 7" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/>
+        <path d="M13 31h14" stroke="var(--gold-soft)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="20" cy="8" r="2.3" fill="var(--gold-soft)"/>
+      </svg>
+      <span>Juris<small>বাংলাদেশ আইন · NexaLance</small></span>
+    </a>
+    <nav class="nav-pills">
+      <a href="#mockups">Mockups</a>
+      <a href="#foundations">Foundations</a>
+      <a href="#components">Components</a>
+      <a href="#assistant">AI Assistant</a>
+      <a href="#law">Law DB</a>
+      <a href="#mobile">Mobile</a>
+      <a href="#admin">Admin</a>
+      <a href="#states">States</a>
+    </nav>
+    <div class="top-actions">
+      <div class="seg" role="group" aria-label="Language">
+        <button id="en" aria-pressed="true" onclick="setLang('en')">EN</button>
+        <button id="bn" aria-pressed="false" onclick="setLang('bn')">বাংলা</button>
+      </div>
+      <button class="toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg id="themeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <span id="themeLabel">Dark</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===================================================== HERO -->
+<a id="top"></a>
+<section class="hero wrap">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">Bangladesh Legal-Tech · Ref NLX-LEGALTECH</span>
+      <h1><span class="lang-en">Verified Bangladesh law, <em>answered.</em></span><span class="lang-bn">যাচাই করা বাংলাদেশ আইন, <em>এখন সহজ।</em></span></h1>
+      <p class="lede lang-en">An AI legal assistant grounded strictly in verified Bangladesh law — never guesswork. Search the full law database and consult Bar-verified lawyers. Bilingual, by design.</p>
+      <p class="lede lang-bn" style="font-family:var(--f-bn)">একটি এআই আইন সহকারী — যা শুধুমাত্র যাচাই করা বাংলাদেশ আইনের উপর ভিত্তি করে উত্তর দেয়, অনুমান নয়। সম্পূর্ণ আইন ডেটাবেস খুঁজুন এবং যাচাইকৃত আইনজীবীর পরামর্শ নিন।</p>
+      <p class="bn-lede lang-en">এই তথ্য শুধুমাত্র সাধারণ তথ্যের জন্য। এটি আইনি পরামর্শ নয়।</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#assistant">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span class="lang-en">Ask the assistant</span><span class="lang-bn">প্রশ্ন করুন</span>
+        </a>
+        <a class="btn btn-ghost" href="#law">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg>
+          <span class="lang-en">Browse the law</span><span class="lang-bn">আইন দেখুন</span>
+        </a>
+      </div>
+      <div class="trust-row">
+        <div class="ti"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 4v5c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V7z"/></svg><span class="lang-en">Citations on every answer</span><span class="lang-bn">প্রতিটি উত্তরে উদ্ধৃতি</span></div>
+        <div class="ti"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg><span class="lang-en">বাংলা + English</span><span class="lang-bn">বাংলা ও ইংরেজি</span></div>
+        <div class="ti"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span class="lang-en">WCAG AA · Light / Dark</span><span class="lang-bn">সহজলভ্য · আলো / অন্ধকার</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="/design/assets/hero.png" alt="Illustration of Bangladesh law statutes, scales of justice and an AI answer bubble" />
+      <div class="float a">
+        <span class="badge-verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Verified source</span>
+      </div>
+      <div class="float b"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> 12,400+ sections indexed</div>
+    </div>
+  </div>
+  <div class="stat-band">
+    <div class="s"><b>63</b><span class="lang-en">screens blueprinted</span><span class="lang-bn">স্ক্রিন পরিকল্পিত</span></div>
+    <div class="s"><b>41</b><span class="lang-en">in the MVP set</span><span class="lang-bn">এমভিপি সেটে</span></div>
+    <div class="s"><b>2</b><span class="lang-en">languages, one system</span><span class="lang-bn">ভাষা, এক সিস্টেম</span></div>
+    <div class="s"><b>5</b><span class="lang-en">states per screen</span><span class="lang-bn">প্রতি স্ক্রিনে অবস্থা</span></div>
+  </div>
+</section>
+
+<!-- ===================================================== MOCKUP GALLERY -->
+<a id="mockups"></a>
+<div class="mock-band">
+<section class="wrap">
+  <div class="sec-head" style="max-width:720px">
+    <span class="eyebrow">00 · Image-first · Hi-fi mockups</span>
+    <h2 class="lang-en">Every screen, visualised before it's built</h2><h2 class="lang-bn">নির্মাণের আগে প্রতিটি স্ক্রিন কল্পনায়</h2>
+    <p class="lang-en">Each core screen was first rendered as a high-fidelity visual reference, then rebuilt as the live, responsive, bilingual code below. The mockups are the approval target; the code is the hand-off.</p>
+    <p class="lang-bn" style="font-family:var(--f-bn)">প্রতিটি মূল স্ক্রিন প্রথমে হাই-ফিডেলিটি ভিজ্যুয়াল হিসেবে তৈরি, তারপর নিচে লাইভ, রেসপন্সিভ, দ্বিভাষিক কোডে রূপান্তরিত। মকআপ অনুমোদনের লক্ষ্য; কোড হ্যান্ড-অফ।</p>
+    <div class="mock-legend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 4v5c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg><span class="lang-en">Reference visuals — the coded versions are in the sections below</span><span class="lang-bn">রেফারেন্স ভিজ্যুয়াল — কোডেড সংস্করণ নিচের বিভাগে</span></div>
+  </div>
+
+  <div class="mock-grid">
+    <figure class="mock">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd/assistant</div></div><img src="/design/assets/mockups/ai-web.png" alt="AI legal assistant chat screen mockup" loading="lazy"></div>
+      <figcaption><span class="id">C2</span> <span class="lang-en">AI Legal Assistant</span><span class="lang-bn">এআই আইন সহকারী</span> <span class="cap-sub">· web</span><span class="tag">MVP</span></figcaption>
+    </figure>
+    <figure class="mock">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd/laws/penal-code/s-420</div></div><img src="/design/assets/mockups/section-web.png" alt="Law section detail reading screen mockup" loading="lazy"></div>
+      <figcaption><span class="id">D6</span> <span class="lang-en">Section detail</span><span class="lang-bn">ধারা বিস্তারিত</span> <span class="cap-sub">· web</span><span class="tag">MVP</span></figcaption>
+    </figure>
+    <figure class="mock">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd/search?q=online+fraud</div></div><img src="/design/assets/mockups/search-web.png" alt="Law database search results screen mockup" loading="lazy"></div>
+      <figcaption><span class="id">D3</span> <span class="lang-en">Search results</span><span class="lang-bn">অনুসন্ধান ফলাফল</span> <span class="cap-sub">· web</span><span class="tag">MVP</span></figcaption>
+    </figure>
+    <figure class="mock">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>admin.juris.com.bd/dashboard</div></div><img src="/design/assets/mockups/admin-web.png" alt="Admin dashboard screen mockup" loading="lazy"></div>
+      <figcaption><span class="id">H2</span> <span class="lang-en">Admin dashboard</span><span class="lang-bn">অ্যাডমিন ড্যাশবোর্ড</span> <span class="cap-sub">· admin</span><span class="tag tadm">MVP</span></figcaption>
+    </figure>
+    <figure class="mock wide">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd/verify</div></div><img src="/design/assets/mockups/auth-web.png" alt="Login and OTP verification screen mockup" loading="lazy"></div>
+      <figcaption><span class="id">A4·A5</span> <span class="lang-en">Login &amp; OTP verification</span><span class="lang-bn">লগইন ও ওটিপি যাচাই</span> <span class="cap-sub">· web</span><span class="tag">MVP</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="mock-phones">
+    <figure><img src="/design/assets/mockups/home-mobile.png" alt="Mobile home dashboard screen mockup" loading="lazy"><figcaption><span class="id">B2</span> <span class="lang-en">Home dashboard · mobile</span><span class="lang-bn">হোম · মোবাইল</span></figcaption></figure>
+    <figure><img src="/design/assets/mockups/chat-mobile.png" alt="Mobile AI assistant chat screen mockup" loading="lazy"><figcaption><span class="id">C2</span> <span class="lang-en">AI Assistant · mobile</span><span class="lang-bn">সহকারী · মোবাইল</span></figcaption></figure>
+  </div>
+
+  <div style="height:52px"></div>
+  <div class="sec-head" style="max-width:680px;margin-bottom:30px">
+    <span class="eyebrow">Landing · Marketplace · Portal · Payments</span>
+    <h3 style="font-size:clamp(24px,3.4vw,34px);margin:12px 0 10px" class="lang-en">The public site &amp; Phase-2 flows</h3><h3 style="font-size:clamp(24px,3.4vw,34px);margin:12px 0 10px" class="lang-bn">পাবলিক সাইট ও ফেজ-২ ফ্লো</h3>
+    <p class="lang-en">The logged-out landing page, plus the lawyer marketplace, lawyer portal and consultation payments that make up the Phase-2 build.</p>
+    <p class="lang-bn" style="font-family:var(--f-bn)">লগড-আউট ল্যান্ডিং পেজ, সাথে আইনজীবী মার্কেটপ্লেস, আইনজীবী পোর্টাল ও পরামর্শ পেমেন্ট — যা ফেজ-২ নির্মাণ।</p>
+  </div>
+
+  <div class="mock-grid">
+    <figure class="mock wide">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd</div></div><img src="/design/assets/mockups/landing-web.png" alt="Logged-out marketing landing page mockup" loading="lazy"></div>
+      <figcaption><span class="id">B1</span> <span class="lang-en">Home / landing (logged-out, SEO)</span><span class="lang-bn">হোম / ল্যান্ডিং</span> <span class="cap-sub">· web</span><span class="tag">MVP</span></figcaption>
+    </figure>
+    <figure class="mock">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd/lawyers</div></div><img src="/design/assets/mockups/lawyers-web.png" alt="Lawyer directory page mockup" loading="lazy"></div>
+      <figcaption><span class="id">E1</span> <span class="lang-en">Lawyer directory</span><span class="lang-bn">আইনজীবী তালিকা</span> <span class="cap-sub">· web</span><span class="tag p2">Phase 2</span></figcaption>
+    </figure>
+    <figure class="mock">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd/lawyers/sadia-rahman</div></div><img src="/design/assets/mockups/lawyer-profile-web.png" alt="Lawyer profile page mockup" loading="lazy"></div>
+      <figcaption><span class="id">E2</span> <span class="lang-en">Lawyer profile</span><span class="lang-bn">আইনজীবী প্রোফাইল</span> <span class="cap-sub">· web</span><span class="tag p2">Phase 2</span></figcaption>
+    </figure>
+    <figure class="mock wide">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd/portal/dashboard</div></div><img src="/design/assets/mockups/lawyer-dash-web.png" alt="Lawyer portal dashboard mockup" loading="lazy"></div>
+      <figcaption><span class="id">G3</span> <span class="lang-en">Lawyer portal dashboard</span><span class="lang-bn">আইনজীবী পোর্টাল</span> <span class="cap-sub">· web</span><span class="tag p2">Phase 2</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="mock-phones">
+    <figure><img src="/design/assets/mockups/consult-mobile.png" alt="User to lawyer consultation chat mockup" loading="lazy"><figcaption><span class="id">E4</span> <span class="lang-en">Consultation chat · mobile</span><span class="lang-bn">পরামর্শ চ্যাট</span></figcaption></figure>
+    <figure><img src="/design/assets/mockups/pay-mobile.png" alt="Consultation payment checkout mockup" loading="lazy"><figcaption><span class="id">I2</span> <span class="lang-en">Payment / checkout · mobile</span><span class="lang-bn">পেমেন্ট · মোবাইল</span></figcaption></figure>
+  </div>
+
+  <div style="height:52px"></div>
+  <div class="sec-head" style="max-width:680px;margin-bottom:30px">
+    <span class="eyebrow">Onboarding · AI states · Account</span>
+    <h3 style="font-size:clamp(24px,3.4vw,34px);margin:12px 0 10px" class="lang-en">Getting in, and the moments that build trust</h3><h3 style="font-size:clamp(24px,3.4vw,34px);margin:12px 0 10px" class="lang-bn">প্রবেশ ও আস্থা তৈরির মুহূর্ত</h3>
+    <p class="lang-en">Onboarding and sign-up, the assistant's empty and voice states, category browsing, and the account hub — the everyday surfaces that make the product feel dependable.</p>
+    <p class="lang-bn" style="font-family:var(--f-bn)">অনবোর্ডিং ও সাইন-আপ, সহকারীর খালি ও ভয়েস অবস্থা, বিভাগ ব্রাউজিং এবং অ্যাকাউন্ট হাব — দৈনন্দিন পৃষ্ঠতল যা পণ্যকে নির্ভরযোগ্য করে।</p>
+  </div>
+
+  <div class="mock-grid">
+    <figure class="mock">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd/signup</div></div><img src="/design/assets/mockups/signup-web.png" alt="Sign up screen mockup" loading="lazy"></div>
+      <figcaption><span class="id">A3</span> <span class="lang-en">Sign up</span><span class="lang-bn">সাইন আপ</span> <span class="cap-sub">· web</span><span class="tag">MVP</span></figcaption>
+    </figure>
+    <figure class="mock">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd/assistant</div></div><img src="/design/assets/mockups/ai-empty-web.png" alt="AI assistant empty state with suggested prompts mockup" loading="lazy"></div>
+      <figcaption><span class="id">C1</span> <span class="lang-en">AI chat — empty / prompts</span><span class="lang-bn">এআই — শুরু</span> <span class="cap-sub">· web</span><span class="tag">MVP</span></figcaption>
+    </figure>
+    <figure class="mock wide">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd/laws</div></div><img src="/design/assets/mockups/categories-web.png" alt="Law categories browse page mockup" loading="lazy"></div>
+      <figcaption><span class="id">D1</span> <span class="lang-en">Law categories / browse</span><span class="lang-bn">আইন বিভাগ</span> <span class="cap-sub">· web</span><span class="tag">MVP</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="mock-phones">
+    <figure><img src="/design/assets/mockups/welcome-mobile.png" alt="Welcome intro carousel mockup" loading="lazy"><figcaption><span class="id">A2</span> <span class="lang-en">Welcome carousel · mobile</span><span class="lang-bn">ওয়েলকাম · মোবাইল</span></figcaption></figure>
+    <figure><img src="/design/assets/mockups/voice-mobile.png" alt="Bangla voice input listening state mockup" loading="lazy"><figcaption><span class="id">C4</span> <span class="lang-en">Voice input (Bangla) · mobile</span><span class="lang-bn">ভয়েস ইনপুট · মোবাইল</span></figcaption></figure>
+    <figure><img src="/design/assets/mockups/account-mobile.png" alt="Account profile and settings mockup" loading="lazy"><figcaption><span class="id">F1·F2</span> <span class="lang-en">Account & settings · mobile</span><span class="lang-bn">অ্যাকাউন্ট · মোবাইল</span></figcaption></figure>
+  </div>
+
+  <div style="height:52px"></div>
+  <div class="sec-head" style="max-width:680px;margin-bottom:30px">
+    <span class="eyebrow">Trust moments · Verification · Admin depth</span>
+    <h3 style="font-size:clamp(24px,3.4vw,34px);margin:12px 0 10px" class="lang-en">Where the platform earns its authority</h3><h3 style="font-size:clamp(24px,3.4vw,34px);margin:12px 0 10px" class="lang-bn">যেখানে প্ল্যাটফর্ম কর্তৃত্ব অর্জন করে</h3>
+    <p class="lang-en">The honest "no verified answer" moment, notifications, Bar-Council verification, and the two admin surfaces that keep answers grounded — the bilingual Law CMS and the AI answer-review queue.</p>
+    <p class="lang-bn" style="font-family:var(--f-bn)">সৎ "উত্তর নেই" মুহূর্ত, নোটিফিকেশন, বার-কাউন্সিল যাচাই, এবং দুটি অ্যাডমিন পৃষ্ঠতল — দ্বিভাষিক ল CMS ও এআই উত্তর পর্যালোচনা সারি।</p>
+  </div>
+
+  <div class="mock-grid">
+    <figure class="mock">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd/portal/verify</div></div><img src="/design/assets/mockups/bar-verify-web.png" alt="Bar Council verification upload and status mockup" loading="lazy"></div>
+      <figcaption><span class="id">G2</span> <span class="lang-en">Bar Council verification</span><span class="lang-bn">বার কাউন্সিল যাচাই</span> <span class="cap-sub">· web</span><span class="tag p2">Phase 2</span></figcaption>
+    </figure>
+    <figure class="mock">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>admin.juris.com.bd/ai-review</div></div><img src="/design/assets/mockups/ai-review-web.png" alt="Admin AI answer review queue mockup" loading="lazy"></div>
+      <figcaption><span class="id">H7</span> <span class="lang-en">AI answer review &amp; flags</span><span class="lang-bn">এআই উত্তর পর্যালোচনা</span> <span class="cap-sub">· admin</span><span class="tag tadm">MVP</span></figcaption>
+    </figure>
+    <figure class="mock wide">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>admin.juris.com.bd/cms/penal-code/s-420</div></div><img src="/design/assets/mockups/law-cms-web.png" alt="Admin bilingual law content CMS editor mockup" loading="lazy"></div>
+      <figcaption><span class="id">H5</span> <span class="lang-en">Law CMS — bilingual editor</span><span class="lang-bn">ল CMS — দ্বিভাষিক সম্পাদক</span> <span class="cap-sub">· admin</span><span class="tag tadm">MVP</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="mock-phones">
+    <figure><img src="/design/assets/mockups/no-verified-mobile.png" alt="No verified answer offer lawyer state mockup" loading="lazy"><figcaption><span class="id">C5</span> <span class="lang-en">No verified answer · mobile</span><span class="lang-bn">উত্তর নেই · মোবাইল</span></figcaption></figure>
+    <figure><img src="/design/assets/mockups/notifications-mobile.png" alt="Notifications center mockup" loading="lazy"><figcaption><span class="id">B5</span> <span class="lang-en">Notifications · mobile</span><span class="lang-bn">নোটিফিকেশন · মোবাইল</span></figcaption></figure>
+    <figure><img src="/design/assets/mockups/pay-success-mobile.png" alt="Payment success receipt mockup" loading="lazy"><figcaption><span class="id">I3</span> <span class="lang-en">Payment success · mobile</span><span class="lang-bn">পেমেন্ট সফল · মোবাইল</span></figcaption></figure>
+  </div>
+
+  <div style="height:52px"></div>
+  <div class="sec-head" style="max-width:680px;margin-bottom:30px">
+    <span class="eyebrow">Reading depth · Admin ops · History · System</span>
+    <h3 style="font-size:clamp(24px,3.4vw,34px);margin:12px 0 10px" class="lang-en">Depth &amp; the everyday operating surfaces</h3><h3 style="font-size:clamp(24px,3.4vw,34px);margin:12px 0 10px" class="lang-bn">গভীরতা ও দৈনন্দিন পরিচালন পৃষ্ঠতল</h3>
+    <p class="lang-en">Full act navigation, admin user management, combined AI + lawyer chat history, and a calm, on-brand offline/error state.</p>
+    <p class="lang-bn" style="font-family:var(--f-bn)">সম্পূর্ণ আইন নেভিগেশন, অ্যাডমিন ইউজার ব্যবস্থাপনা, সম্মিলিত চ্যাট ইতিহাস, এবং শান্ত অফলাইন/ত্রুটি অবস্থা।</p>
+  </div>
+
+  <div class="mock-grid">
+    <figure class="mock">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd/laws/penal-code-1860</div></div><img src="/design/assets/mockups/act-detail-web.png" alt="Act detail overview with chapter and section list mockup" loading="lazy"></div>
+      <figcaption><span class="id">D5</span> <span class="lang-en">Act detail / structure</span><span class="lang-bn">আইন কাঠামো</span> <span class="cap-sub">· web</span><span class="tag">MVP</span></figcaption>
+    </figure>
+    <figure class="mock">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>admin.juris.com.bd/users</div></div><img src="/design/assets/mockups/users-admin-web.png" alt="Admin user management table mockup" loading="lazy"></div>
+      <figcaption><span class="id">H3</span> <span class="lang-en">User management</span><span class="lang-bn">ইউজার ব্যবস্থাপনা</span> <span class="cap-sub">· admin</span><span class="tag tadm">MVP</span></figcaption>
+    </figure>
+    <figure class="mock wide">
+      <div class="browser"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd/offline</div></div><img src="/design/assets/mockups/offline-web.png" alt="Offline error system state mockup" loading="lazy"></div>
+      <figcaption><span class="id">J5</span> <span class="lang-en">System state — offline / error</span><span class="lang-bn">সিস্টেম অবস্থা</span> <span class="cap-sub">· web</span><span class="tag">MVP</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="mock-phones">
+    <figure><img src="/design/assets/mockups/history-mobile.png" alt="Combined AI and lawyer chat history mockup" loading="lazy"><figcaption><span class="id">F3·C6</span> <span class="lang-en">Chat history · mobile</span><span class="lang-bn">চ্যাট ইতিহাস · মোবাইল</span></figcaption></figure>
+  </div>
+</section>
+</div>
+
+<!-- ===================================================== FOUNDATIONS -->
+<section id="foundations" class="wrap">
+  <div class="sec-head">
+    <span class="eyebrow">01 · Foundations</span>
+    <h2 class="lang-en">A design system built for trust</h2><h2 class="lang-bn">আস্থার জন্য তৈরি ডিজাইন সিস্টেম</h2>
+    <p class="lang-en">One token set powers web, mobile and admin — in light and dark. Deep Bangladesh green signals authority; antique gold marks anything verified or cited.</p>
+    <p class="lang-bn" style="font-family:var(--f-bn)">একটি টোকেন সেট ওয়েব, মোবাইল ও অ্যাডমিনকে চালায় — আলো ও অন্ধকারে। গাঢ় সবুজ কর্তৃত্ব বোঝায়; সোনালি রঙ যাচাইকৃত বা উদ্ধৃত সবকিছু চিহ্নিত করে।</p>
+  </div>
+  <div class="grid tokens-grid">
+    <div class="panel">
+      <h3>Color tokens</h3>
+      <div class="sub">Semantic, theme-aware. Verified against WCAG AA.</div>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#064E3B"></div><div class="meta"><b>Primary Deep</b><span>#064E3B</span></div></div>
+        <div class="sw"><div class="chip" style="background:#0E7C5A"></div><div class="meta"><b>Primary</b><span>#0E7C5A</span></div></div>
+        <div class="sw"><div class="chip" style="background:#37C892"></div><div class="meta"><b>Primary Dark-UI</b><span>#37C892</span></div></div>
+        <div class="sw"><div class="chip" style="background:#E2F0E9"></div><div class="meta"><b>Primary Soft</b><span>#E2F0E9</span></div></div>
+        <div class="sw"><div class="chip" style="background:#9C7218"></div><div class="meta"><b>Gold / Cite</b><span>#9C7218</span></div></div>
+        <div class="sw"><div class="chip" style="background:#F4E9CD"></div><div class="meta"><b>Gold Soft</b><span>#F4E9CD</span></div></div>
+        <div class="sw"><div class="chip" style="background:#B23A2B"></div><div class="meta"><b>Danger</b><span>#B23A2B</span></div></div>
+        <div class="sw"><div class="chip" style="background:#1F6FEB"></div><div class="meta"><b>Info</b><span>#1F6FEB</span></div></div>
+        <div class="sw"><div class="chip" style="background:#10221C"></div><div class="meta"><b>Ink</b><span>#10221C</span></div></div>
+        <div class="sw"><div class="chip" style="background:#6E7A72"></div><div class="meta"><b>Muted</b><span>#6E7A72</span></div></div>
+        <div class="sw"><div class="chip" style="background:#F6F4ED;border:1px solid #E3DFD3"></div><div class="meta"><b>Paper</b><span>#F6F4ED</span></div></div>
+        <div class="sw"><div class="chip" style="background:#081410"></div><div class="meta"><b>Paper Dark</b><span>#081410</span></div></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Type & script</h3>
+      <div class="sub">Fraunces (display) · Plus Jakarta Sans (UI) · Noto Sans Bengali · IBM Plex Mono (citations).</div>
+      <div class="type-row"><div class="d1">Aa আইন</div><div class="lbl">Fraunces · 40 / 600</div></div>
+      <div class="type-row"><div class="d2">Section 375</div><div class="lbl">Display · 28 / 600</div></div>
+      <div class="type-row"><div class="d3">The Penal Code, 1860</div><div class="lbl">UI · 20 / 700</div></div>
+      <div class="type-row"><div class="d4 bn">দণ্ডবিধি, ১৮৬০</div><div class="lbl">Bengali · 16 / 600</div></div>
+      <div class="type-row"><div class="d5 mono">Act XLV · § 375(a)</div><div class="lbl">Mono · tabular</div></div>
+      <div style="margin-top:22px">
+        <div class="lbl" style="font-family:var(--f-mono);font-size:11px;color:var(--muted);margin-bottom:14px">SPACING SCALE · 4pt base</div>
+        <div class="scale-strip">
+          <div class="u" style="height:16px"><span>4</span><b>xs</b></div>
+          <div class="u" style="height:24px"><span>8</span><b>sm</b></div>
+          <div class="u" style="height:36px"><span>12</span><b>md</b></div>
+          <div class="u" style="height:52px"><span>16</span><b>lg</b></div>
+          <div class="u" style="height:72px"><span>24</span><b>xl</b></div>
+          <div class="u" style="height:96px"><span>32</span><b>2xl</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== COMPONENTS -->
+<section id="components" class="wrap">
+  <div class="sec-head">
+    <span class="eyebrow">02 · Components</span>
+    <h2 class="lang-en">Build once, reuse everywhere</h2><h2 class="lang-bn">একবার তৈরি, সর্বত্র ব্যবহার</h2>
+    <p class="lang-en">The signature primitives — citation chip, disclaimer banner and verified badge — carry the platform's promise of grounded, trustworthy answers.</p>
+    <p class="lang-bn" style="font-family:var(--f-bn)">স্বাক্ষরিত উপাদানগুলো — উদ্ধৃতি চিপ, দাবিত্যাগ ব্যানার ও যাচাই ব্যাজ — প্ল্যাটফর্মের নির্ভরযোগ্য উত্তরের প্রতিশ্রুতি বহন করে।</p>
+  </div>
+  <div class="grid comp-grid">
+    <div class="comp">
+      <span class="cn">Buttons</span>
+      <button class="btn btn-primary btn-sm">Ask AI</button>
+      <button class="btn btn-ghost btn-sm">Save section</button>
+      <button class="btn btn-gold btn-sm">Talk to a lawyer</button>
+    </div>
+    <div class="comp">
+      <span class="cn">Citation chips → D6</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span class="chip-cite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H8l-4 4z"/></svg>Penal Code · §375</span>
+        <span class="chip-cite">DMA 2010 · §57</span>
+        <span class="chip-cite">Const. · Art.27</span>
+      </div>
+    </div>
+    <div class="comp">
+      <span class="cn">Disclaimer banner</span>
+      <div class="disclaimer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><span class="lang-en">This is general information, not legal advice.</span><span class="lang-bn">এই তথ্য শুধুমাত্র সাধারণ তথ্যের জন্য। এটি আইনি পরামর্শ নয়।</span></span></div>
+    </div>
+    <div class="comp">
+      <span class="cn">Verified & rating</span>
+      <span class="badge-verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Bar Council verified</span>
+      <div style="display:flex;align-items:center;gap:8px"><span class="stars"><svg fill="currentColor" viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 .6-5.3 4.6L18.2 21 12 17.3 5.8 21l1.5-7.3L2 9.1l7-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 .6-5.3 4.6L18.2 21 12 17.3 5.8 21l1.5-7.3L2 9.1l7-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 .6-5.3 4.6L18.2 21 12 17.3 5.8 21l1.5-7.3L2 9.1l7-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 .6-5.3 4.6L18.2 21 12 17.3 5.8 21l1.5-7.3L2 9.1l7-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24" opacity=".35"><path d="m12 2 3 6.5 7 .6-5.3 4.6L18.2 21 12 17.3 5.8 21l1.5-7.3L2 9.1l7-.6z"/></svg></span><span style="font-size:12.5px;font-weight:700">4.6 · 128</span></div>
+    </div>
+    <div class="comp">
+      <span class="cn">Search bar + voice</span>
+      <div class="searchbar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><span class="ph"><span class="lang-en">Search acts, sections…</span><span class="lang-bn">আইন, ধারা খুঁজুন…</span></span><span class="mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span></div>
+    </div>
+    <div class="comp">
+      <span class="cn">Input field</span>
+      <div class="field"><label>Mobile number *</label><div class="inp mono">+880 1XXX-XXXXXX</div><span class="hint"><span class="lang-en">We'll send a one-time code.</span><span class="lang-bn">আমরা একটি কোড পাঠাব।</span></span></div>
+    </div>
+    <div class="comp">
+      <span class="cn">OTP input</span>
+      <div class="otp"><div class="cell">4</div><div class="cell">7</div><div class="cell">2</div><div class="cell active"></div><div class="cell"></div><div class="cell"></div></div>
+    </div>
+    <div class="comp">
+      <span class="cn">Tabs & toast</span>
+      <div class="tabs"><button class="on">বাংলা</button><button>English</button><button>Plain</button></div>
+      <div class="toast"><span class="dot"></span><span class="lang-en">Saved to bookmarks</span><span class="lang-bn">বুকমার্কে সংরক্ষিত</span></div>
+    </div>
+    <div class="comp">
+      <span class="cn">Stepper · verification</span>
+      <div class="stepper">
+        <div class="st done"><span class="dot"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span></div>
+        <div class="bar fill"></div>
+        <div class="st now"><span class="dot">2</span></div>
+        <div class="bar"></div>
+        <div class="st"><span class="dot">3</span></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;color:var(--muted)"><span>Submitted</span><span style="color:var(--primary)">Under review</span><span>Verified</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== AI ASSISTANT -->
+<section id="assistant" class="wrap">
+  <div class="sec-head">
+    <span class="eyebrow">03 · C1–C2 · The hero screen</span>
+    <h2 class="lang-en">AI Legal Assistant</h2><h2 class="lang-bn">এআই আইন সহকারী</h2>
+    <p class="lang-en">Ask in plain Bangla or English. Every answer is grounded, cites the exact Act · Section, and carries the disclaimer. When confidence is low, it says so — and offers a lawyer.</p>
+    <p class="lang-bn" style="font-family:var(--f-bn)">সহজ বাংলা বা ইংরেজিতে জিজ্ঞাসা করুন। প্রতিটি উত্তর নির্ভরযোগ্য, সঠিক আইন ও ধারা উদ্ধৃত করে এবং দাবিত্যাগ বহন করে। আস্থা কম হলে তা জানায় — এবং আইনজীবীর প্রস্তাব দেয়।</p>
+  </div>
+
+  <div class="screen-label"><span class="id">C2</span><h3 class="lang-en">Conversation — answered</h3><h3 class="lang-bn">কথোপকথন — উত্তরিত</h3><span class="tag">MVP · Web</span></div>
+  <div class="browser">
+    <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd/assistant</div></div>
+    <div class="assist">
+      <aside class="side">
+        <button class="btn btn-primary btn-sm btn-block new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 5v14M5 12h14"/></svg> New chat</button>
+        <div class="sh">Today</div>
+        <div class="hist on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Tenant eviction notice</div>
+        <div class="hist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Cheque dishonour case</div>
+        <div class="sh">Earlier</div>
+        <div class="hist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Registering a marriage</div>
+        <div class="hist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Consumer refund rights</div>
+      </aside>
+      <div class="conv">
+        <div class="conv-head">
+          <span class="avatar" style="background:var(--primary);width:30px;height:30px;font-size:12px">J</span>
+          <div class="t">Juris Assistant</div>
+          <a class="btn btn-gold btn-sm lawyer-cta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Talk to a lawyer</a>
+        </div>
+        <div class="thread">
+          <div class="msg user"><span class="ava">You</span><div class="bubble">My landlord wants me to vacate in 7 days without any written notice. Is that legal in Bangladesh?</div></div>
+          <div class="msg ai">
+            <span class="ava">J</span>
+            <div class="bubble">
+              <div class="ai-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 4v5c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg> Grounded in verified law</div>
+              Generally, no. Under the tenancy law that applies to most rented premises, a landlord must give <b>written notice</b> before requiring a tenant to vacate, and a tenant cannot be evicted merely by an oral demand. The standard notice period is <b>one month</b>, not seven days.
+              <ul>
+                <li>A valid notice must be in writing and served properly.</li>
+                <li>Eviction without due process can be challenged in the relevant court.</li>
+              </ul>
+              <div class="cites">
+                <span class="chip-cite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H8l-4 4z"/></svg>Premises Rent Control Act · §18</span>
+                <span class="chip-cite">Transfer of Property Act · §106</span>
+              </div>
+              <div class="disclaimer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><span class="lang-en">This is general information, not legal advice. Consult a lawyer for your specific case.</span><span class="lang-bn">এই তথ্য শুধুমাত্র সাধারণ তথ্যের জন্য। এটি আইনি পরামর্শ নয়।</span></span></div>
+              <div class="feedback">
+                <button class="fbtn" aria-label="Helpful"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 11v9H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1zM7 11l4-8a2 2 0 0 1 2 2v4h5a2 2 0 0 1 2 2.3l-1.3 6A2 2 0 0 1 17 20H7"/></svg></button>
+                <button class="fbtn" aria-label="Not helpful"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 13V4h3a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1zM17 13l-4 8a2 2 0 0 1-2-2v-4H6a2 2 0 0 1-2-2.3l1.3-6A2 2 0 0 1 7 4h10"/></svg></button>
+                <button class="fbtn" aria-label="Report"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22V4h13l-2 4 2 4H4"/></svg></button>
+                <span class="fb-spacer"></span>
+                <button class="fbtn" aria-label="Save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="composer">
+          <div class="box"><span class="ph"><span class="lang-en">Ask a legal question…</span><span class="lang-bn">একটি আইনি প্রশ্ন করুন…</span></span><span class="mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span></div>
+          <button class="send" aria-label="Send"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:26px"></div>
+  <div class="grid" style="grid-template-columns:1fr 1fr;gap:22px">
+    <div>
+      <div class="screen-label"><span class="id">C1</span><h3 class="lang-en">Empty — suggested prompts</h3><h3 class="lang-bn">শুরু — প্রস্তাবিত প্রশ্ন</h3></div>
+      <div class="panel" style="min-height:280px;display:flex;flex-direction:column;justify-content:center;text-align:center;align-items:center;gap:16px">
+        <span class="avatar" style="background:var(--primary);width:56px;height:56px;font-size:22px">J</span>
+        <div><h3 style="font-size:22px" class="lang-en">How can I help with the law today?</h3><h3 style="font-size:22px" class="lang-bn">আজ আইনে কীভাবে সাহায্য করতে পারি?</h3>
+        <p style="color:var(--muted);font-size:13.5px;margin-top:6px" class="lang-en">Ask anything — answers are grounded in verified Bangladesh law.</p><p style="color:var(--muted);font-size:13.5px;margin-top:6px;font-family:var(--f-bn)" class="lang-bn">যেকোনো কিছু জিজ্ঞাসা করুন — উত্তর যাচাইকৃত আইনের উপর ভিত্তি করে।</p></div>
+        <div class="suggests">
+          <span class="sg">🏠 <span class="lang-en">Tenant rights</span><span class="lang-bn">ভাড়াটিয়ার অধিকার</span></span>
+          <span class="sg">💳 <span class="lang-en">Cheque dishonour</span><span class="lang-bn">চেক ডিজঅনার</span></span>
+          <span class="sg">👨‍👩‍👧 <span class="lang-en">Family & marriage</span><span class="lang-bn">পারিবারিক আইন</span></span>
+          <span class="sg">⚖️ <span class="lang-en">Consumer refund</span><span class="lang-bn">ভোক্তা অধিকার</span></span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="screen-label"><span class="id">C5</span><h3 class="lang-en">No verified answer → offer lawyer</h3><h3 class="lang-bn">উত্তর নেই → আইনজীবী</h3></div>
+      <div class="panel" style="min-height:280px">
+        <div class="msg ai" style="max-width:100%">
+          <span class="ava" style="background:var(--warn);color:#fff">J</span>
+          <div class="bubble" style="max-width:100%">
+            <div class="noverify" style="margin-top:0">
+              <div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span class="lang-en">Couldn't find this in the verified law database</span><span class="lang-bn">যাচাইকৃত ডেটাবেসে পাওয়া যায়নি</span></div>
+              <p class="lang-en">I won't guess on legal matters. This question isn't covered by the verified sources I'm allowed to cite. A qualified lawyer can help with your specific situation.</p>
+              <p class="lang-bn" style="font-family:var(--f-bn)">আইনি বিষয়ে আমি অনুমান করি না। এই প্রশ্নটি আমার উদ্ধৃত করার অনুমতিপ্রাপ্ত যাচাইকৃত উৎসে নেই। একজন যোগ্য আইনজীবী আপনাকে সাহায্য করতে পারেন।</p>
+              <div class="acts">
+                <button class="btn btn-gold btn-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Find a lawyer</button>
+                <button class="btn btn-ghost btn-sm"><span class="lang-en">Rephrase question</span><span class="lang-bn">প্রশ্ন বদলান</span></button>
+              </div>
+            </div>
+            <div class="disclaimer" style="margin-top:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span class="lang-en">This is general information, not legal advice.</span><span class="lang-bn">এই তথ্য আইনি পরামর্শ নয়।</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== LAW DB -->
+<section id="law" class="wrap">
+  <div class="sec-head">
+    <span class="eyebrow">04 · D3–D6 · Law database</span>
+    <h2 class="lang-en">Authoritative reading, plainly explained</h2><h2 class="lang-bn">নির্ভরযোগ্য পাঠ, সহজ ব্যাখ্যা</h2>
+    <p class="lang-en">Act ▸ Chapter ▸ Section, with a bn/en toggle, plain-language explanation, a real-world example and related laws. Search highlights matches across both languages.</p>
+    <p class="lang-bn" style="font-family:var(--f-bn)">আইন ▸ অধ্যায় ▸ ধারা — বাংলা/ইংরেজি টগল, সহজ ভাষায় ব্যাখ্যা, বাস্তব উদাহরণ ও সম্পর্কিত আইন সহ। অনুসন্ধান উভয় ভাষায় মিল চিহ্নিত করে।</p>
+  </div>
+
+  <div class="screen-label"><span class="id">D6</span><h3 class="lang-en">Section detail</h3><h3 class="lang-bn">ধারা বিস্তারিত</h3><span class="tag">MVP · Web</span></div>
+  <div class="browser">
+    <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd/laws/penal-code-1860/ch16/s-420</div></div>
+    <div class="law">
+      <div class="main">
+        <div class="crumb">The Penal Code, 1860 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Ch. XVII — Offences against property <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span class="cur">§420</span></div>
+        <h2 class="title lang-en">Cheating and dishonestly inducing delivery of property</h2>
+        <h2 class="title lang-bn bn">প্রতারণা এবং অসাধুভাবে সম্পত্তি অর্পণে প্ররোচিত করা</h2>
+        <div class="meta-line"><span><b>Act:</b> XLV of 1860</span><span><b>Section:</b> 420</span><span><b>Chapter:</b> XVII</span><span class="badge-verified" style="padding:2px 8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Verified</span></div>
+        <div class="tabs lang-tabs"><button class="on">English</button><button>বাংলা</button><button>Plain language</button></div>
+        <div class="sec-body">
+          Whoever cheats and thereby dishonestly induces the person deceived to deliver any property to any person, or to make, alter or destroy the whole or any part of a valuable security, or anything which is signed or sealed, and which is capable of being converted into a valuable security, shall be punished with imprisonment of either description for a term which may extend to <b>seven years</b>, and shall also be liable to fine.
+        </div>
+        <div class="callout plain">
+          <div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg><span class="lang-en">In plain language</span><span class="lang-bn">সহজ ভাষায়</span></div>
+          <p class="lang-en">If someone tricks you into handing over money, goods, or signing something valuable — that's an offence. The punishment can be up to seven years in prison plus a fine.</p>
+          <p class="lang-bn" style="font-family:var(--f-bn)">কেউ যদি প্রতারণা করে আপনাকে টাকা, জিনিস বা মূল্যবান কিছুতে সই করতে বাধ্য করে — তা অপরাধ। শাস্তি সাত বছর পর্যন্ত কারাদণ্ড ও জরিমানা।</p>
+        </div>
+        <div class="callout example">
+          <div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg><span class="lang-en">Example</span><span class="lang-bn">উদাহরণ</span></div>
+          <p class="lang-en">A seller takes advance payment online for a phone, promising delivery, but never intended to send it and disappears. That can amount to cheating under §420.</p>
+          <p class="lang-bn" style="font-family:var(--f-bn)">একজন বিক্রেতা অনলাইনে ফোনের অগ্রিম টাকা নিয়ে ডেলিভারির প্রতিশ্রুতি দেয়, কিন্তু পাঠানোর ইচ্ছাই ছিল না — এটি §৪২০ অনুযায়ী প্রতারণা হতে পারে।</p>
+        </div>
+        <div class="tool-row">
+          <button class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg> Copy</button>
+          <button class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg> Share</button>
+          <button class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg> Bookmark</button>
+          <button class="tb" style="color:var(--primary);border-color:var(--primary)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Ask AI</button>
+        </div>
+      </div>
+      <div class="aside">
+        <div class="sh lang-en">Related laws</div><div class="sh lang-bn">সম্পর্কিত আইন</div>
+        <a class="rel"><div class="rt">Cheating — definition</div><div class="rd mono">Penal Code · §415</div></a>
+        <a class="rel"><div class="rt">Punishment for cheating</div><div class="rd mono">Penal Code · §417</div></a>
+        <a class="rel"><div class="rt">Forgery of valuable security</div><div class="rd mono">Penal Code · §467</div></a>
+        <div class="sh" style="margin-top:20px"><span class="lang-en">Court reference</span><span class="lang-bn">আদালত রেফারেন্স</span></div>
+        <a class="rel"><div class="rt">State vs. Md. Rafiqul</div><div class="rd mono">62 DLR (AD) 214</div></a>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:26px"></div>
+  <div class="screen-label"><span class="id">D3</span><h3 class="lang-en">Search results</h3><h3 class="lang-bn">অনুসন্ধান ফলাফল</h3><span class="tag">MVP · Web</span></div>
+  <div class="browser">
+    <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>juris.com.bd/search?q=online+fraud</div></div>
+    <div class="search-screen">
+      <div class="searchbar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><span class="ph" style="color:var(--ink)">online fraud</span><span class="mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span></div>
+      <div class="filters">
+        <span class="fpill on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h18M6 12h12M10 20h4"/></svg>All</span>
+        <span class="fpill">Criminal</span>
+        <span class="fpill">Cyber / Digital</span>
+        <span class="fpill">Consumer</span>
+        <span class="fpill">Year: any</span>
+        <span class="fpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20"/></svg>বাংলা + EN</span>
+      </div>
+      <div class="res-meta"><span class="lang-en"><b>34 results</b> · sorted by relevance</span><span class="lang-bn"><b>৩৪টি ফলাফল</b> · প্রাসঙ্গিকতা অনুযায়ী</span></div>
+      <a class="res"><div class="rtop"><span class="cat">Cyber / Digital</span><span class="badge-verified" style="padding:2px 8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Verified</span><span class="sec-no">§24</span></div><h4>Cyber Security Act, 2023 — Identity fraud</h4><p>Whoever, by using a computer or digital device, commits <mark>online fraud</mark> or identity deception with intent to deceive, shall be punished…</p></a>
+      <a class="res"><div class="rtop"><span class="cat">Criminal</span><span class="sec-no">§420</span></div><h4>The Penal Code, 1860 — Cheating &amp; delivery of property</h4><p>…dishonestly induces the person deceived to deliver property. Frequently applied to <mark>online fraud</mark> and advance-payment scams…</p></a>
+      <a class="res"><div class="rtop"><span class="cat">Consumer</span><span class="sec-no">§43</span></div><h4>ভোক্তা-অধিকার সংরক্ষণ আইন, ২০০৯ — <span class="bn">প্রতারণামূলক বিজ্ঞাপন</span></h4><p class="bn">পণ্য বা সেবা সম্পর্কে মিথ্যা বা <mark>প্রতারণামূলক</mark> তথ্য দিয়ে ভোক্তাকে ঠকানো হলে…</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== MOBILE -->
+<section id="mobile" class="wrap">
+  <div class="sec-head">
+    <span class="eyebrow">05 · Mobile app (React Native)</span>
+    <h2 class="lang-en">Mobile-first, thumb-friendly</h2><h2 class="lang-bn">মোবাইল-ফার্স্ট, সহজ ব্যবহার</h2>
+    <p class="lang-en">Bottom tab bar (Home · Assistant · Laws · Lawyers · Account), native voice input, sheets instead of modals, and offline law reading. Swipe the frames →</p>
+    <p class="lang-bn" style="font-family:var(--f-bn)">নিচের ট্যাব বার (হোম · সহকারী · আইন · আইনজীবী · অ্যাকাউন্ট), ভয়েস ইনপুট, শীট ও অফলাইন পাঠ। ফ্রেম সোয়াইপ করুন →</p>
+  </div>
+  <div class="phones">
+    <!-- Home dashboard -->
+    <div class="phone">
+      <div class="glass">
+        <div class="notch"></div>
+        <div class="p-status"><span class="mono">9:41</span><span class="r"><svg width="16" height="12" viewBox="0 0 24 18" fill="currentColor"><rect x="0" y="10" width="4" height="8" rx="1"/><rect x="6" y="6" width="4" height="12" rx="1"/><rect x="12" y="2" width="4" height="16" rx="1" opacity=".5"/></svg><svg width="18" height="12" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8a11 11 0 0 1 20 0"/><path d="M6 11a6 6 0 0 1 12 0"/></svg><svg width="22" height="12" viewBox="0 0 24 12" fill="currentColor"><rect x="1" y="1" width="20" height="10" rx="2.5" opacity=".4"/><rect x="2.5" y="2.5" width="14" height="7" rx="1.4"/></svg></span></div>
+        <div class="p-head"><div class="pt">স্বাগতম, Arif<small class="lang-en">Good afternoon</small><small class="lang-bn">শুভ অপরাহ্ন</small></div><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span style="position:absolute;top:8px;right:8px;width:8px;height:8px;background:var(--danger);border-radius:50%"></span></div></div>
+        <div class="p-body">
+          <div class="ask-cta">
+            <div class="k">AI Assistant</div>
+            <div class="q lang-en">Ask any legal question in বাংলা or English</div>
+            <div class="q lang-bn">বাংলা বা ইংরেজিতে আইনি প্রশ্ন করুন</div>
+            <div class="mini"><span style="opacity:.85"><span class="lang-en">Type or speak…</span><span class="lang-bn">লিখুন বা বলুন…</span></span><span class="mm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span></div>
+          </div>
+          <div class="sh-row"><span class="lang-en">Quick help</span><span class="lang-bn">দ্রুত সাহায্য</span></div>
+          <div class="quick">
+            <div class="q"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div><span class="lang-en">Tenancy</span><span class="lang-bn">ভাড়া</span></div>
+            <div class="q"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><span class="lang-en">Cheque</span><span class="lang-bn">চেক</span></div>
+            <div class="q"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div><span class="lang-en">Family</span><span class="lang-bn">পরিবার</span></div>
+            <div class="q"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h12"/></svg></div><span class="lang-en">Consumer</span><span class="lang-bn">ভোক্তা</span></div>
+          </div>
+          <div class="sh-row"><span class="lang-en">Continue reading</span><span class="lang-bn">পড়া চালিয়ে যান</span></div>
+          <div class="p-card" style="display:flex;gap:11px;align-items:center;margin-bottom:0"><div class="ic" style="width:34px;height:34px;border-radius:9px;background:var(--gold-soft);color:var(--gold);display:grid;place-items:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg></div><div><div style="font-weight:700;font-size:12.5px">Penal Code · §420</div><div style="font-size:11px;color:var(--muted)">Cheating & property</div></div></div>
+        </div>
+        <div class="p-tabbar">
+          <div class="p-tab on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg><span class="lang-en">Home</span><span class="lang-bn">হোম</span></div>
+          <div class="p-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="lang-en">Assistant</span><span class="lang-bn">সহকারী</span></div>
+          <div class="p-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg><span class="lang-en">Laws</span><span class="lang-bn">আইন</span></div>
+          <div class="p-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="lang-en">Lawyers</span><span class="lang-bn">আইনজীবী</span></div>
+          <div class="p-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="lang-en">Account</span><span class="lang-bn">অ্যাকাউন্ট</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI chat mobile -->
+    <div class="phone">
+      <div class="glass">
+        <div class="notch"></div>
+        <div class="p-status"><span class="mono">9:41</span><span class="r"><svg width="16" height="12" viewBox="0 0 24 18" fill="currentColor"><rect x="0" y="10" width="4" height="8" rx="1"/><rect x="6" y="6" width="4" height="12" rx="1"/><rect x="12" y="2" width="4" height="16" rx="1" opacity=".5"/></svg><svg width="22" height="12" viewBox="0 0 24 12" fill="currentColor"><rect x="1" y="1" width="20" height="10" rx="2.5" opacity=".4"/><rect x="2.5" y="2.5" width="14" height="7" rx="1.4"/></svg></span></div>
+        <div class="p-head"><div class="ico" style="margin-left:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div><div class="pt" style="font-size:16px">Assistant<small class="lang-en">Grounded in verified law</small><small class="lang-bn">যাচাইকৃত আইন ভিত্তিক</small></div><div class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></div></div>
+        <div class="p-body" style="overflow:hidden">
+          <div class="mchat">
+            <div class="mmsg u lang-en">Can my employer fire me without notice?</div>
+            <div class="mmsg u lang-bn">নোটিশ ছাড়া চাকরি থেকে বরখাস্ত করা যায়?</div>
+            <div class="mmsg a">
+              <div class="ai-label" style="color:var(--primary);font-size:10.5px;font-weight:700;display:flex;gap:6px;align-items:center;margin-bottom:6px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 4v5c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg> Verified</div>
+              <span class="lang-en">Usually not. A permanent worker is generally entitled to written notice or wages in lieu, under the labour law.</span>
+              <span class="lang-bn">সাধারণত না। স্থায়ী শ্রমিক লিখিত নোটিশ বা তার বদলে মজুরি পাওয়ার অধিকারী।</span>
+              <div class="mc"><span class="chip-cite">Labour Act 2006 · §26</span></div>
+              <div class="disclaimer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span class="lang-en">Not legal advice.</span><span class="lang-bn">আইনি পরামর্শ নয়।</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:10px 12px;border-top:1px solid var(--line);display:flex;gap:8px;align-items:center;background:var(--surface)">
+          <div style="flex:1;height:40px;border:1px solid var(--line-2);border-radius:var(--r-pill);display:flex;align-items:center;padding:0 6px 0 14px;font-size:12px;color:var(--faint)"><span class="lang-en">Message…</span><span class="lang-bn">লিখুন…</span><span class="mm" style="margin-left:auto;width:28px;height:28px;border-radius:50%;background:var(--primary-soft);color:var(--primary);display:grid;place-items:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span></div>
+          <button class="send" style="width:40px;height:40px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Law browse -->
+    <div class="phone">
+      <div class="glass">
+        <div class="notch"></div>
+        <div class="p-status"><span class="mono">9:41</span><span class="r"><svg width="16" height="12" viewBox="0 0 24 18" fill="currentColor"><rect x="0" y="10" width="4" height="8" rx="1"/><rect x="6" y="6" width="4" height="12" rx="1"/><rect x="12" y="2" width="4" height="16" rx="1" opacity=".5"/></svg><svg width="22" height="12" viewBox="0 0 24 12" fill="currentColor"><rect x="1" y="1" width="20" height="10" rx="2.5" opacity=".4"/><rect x="2.5" y="2.5" width="14" height="7" rx="1.4"/></svg></span></div>
+        <div class="p-head"><div class="pt" style="font-size:19px">Law database<small class="lang-en">Browse by category</small><small class="lang-bn">বিভাগ অনুযায়ী</small></div><div class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6l4 4"/><path d="M20 8a2 2 0 0 0-2-2h-2M4 8a8 8 0 1 0 16 0"/></svg></div></div>
+        <div class="p-body">
+          <div class="searchbar" style="height:44px;margin-bottom:14px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><span class="ph" style="font-size:13px"><span class="lang-en">Search acts…</span><span class="lang-bn">আইন খুঁজুন…</span></span><span class="mic" style="width:30px;height:30px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span></div>
+          <div class="cat-list">
+            <div class="cl"><div class="ci" style="background:var(--danger-soft);color:var(--danger)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></div><div><div class="ct lang-en">Criminal law</div><div class="ct lang-bn">ফৌজদারি</div><div class="cc">Penal Code, CrPC…</div></div><div class="cn">42</div></div>
+            <div class="cl"><div class="ci" style="background:var(--info-soft);color:var(--info)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg></div><div><div class="ct lang-en">Property & land</div><div class="ct lang-bn">সম্পত্তি ও ভূমি</div><div class="cc">Transfer, Registration…</div></div><div class="cn">38</div></div>
+            <div class="cl"><div class="ci" style="background:var(--primary-soft);color:var(--primary)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div><div><div class="ct lang-en">Family law</div><div class="ct lang-bn">পারিবারিক</div><div class="cc">Marriage, Inheritance…</div></div><div class="cn">27</div></div>
+            <div class="cl"><div class="ci" style="background:var(--gold-soft);color:var(--gold)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div><div><div class="ct lang-en">Labour & employment</div><div class="ct lang-bn">শ্রম</div><div class="cc">Labour Act 2006…</div></div><div class="cn">19</div></div>
+            <div class="cl"><div class="ci" style="background:#E8E1F5;color:#6C4BB6"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg></div><div><div class="ct lang-en">Cyber & digital</div><div class="ct lang-bn">সাইবার</div><div class="cc">Cyber Security Act…</div></div><div class="cn">11</div></div>
+          </div>
+        </div>
+        <div class="p-tabbar">
+          <div class="p-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg><span>Home</span></div>
+          <div class="p-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Assistant</span></div>
+          <div class="p-tab on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg><span>Laws</span></div>
+          <div class="p-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Lawyers</span></div>
+          <div class="p-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Account</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lawyer profile (P2) -->
+    <div class="phone">
+      <div class="glass">
+        <div class="notch"></div>
+        <div class="p-status"><span class="mono">9:41</span><span class="r"><svg width="22" height="12" viewBox="0 0 24 12" fill="currentColor"><rect x="1" y="1" width="20" height="10" rx="2.5" opacity=".4"/><rect x="2.5" y="2.5" width="14" height="7" rx="1.4"/></svg></span></div>
+        <div class="p-head"><div class="ico" style="margin-left:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div><div class="pt" style="font-size:17px">Lawyer<small style="color:var(--gold)">Phase 2</small></div></div>
+        <div class="p-body">
+          <div class="p-card" style="text-align:center;padding:18px">
+            <div class="avatar" style="width:64px;height:64px;font-size:24px;margin:0 auto 10px;background:linear-gradient(135deg,var(--primary),var(--primary-deep))">SR</div>
+            <div style="font-weight:800;font-size:16px">Adv. Sadia Rahman</div>
+            <span class="badge-verified" style="margin:8px 0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Bar Council verified</span>
+            <div style="display:flex;justify-content:center;gap:6px;align-items:center;margin-top:4px"><span class="stars" style="transform:scale(.85)"><svg fill="currentColor" viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 .6-5.3 4.6L18.2 21 12 17.3 5.8 21l1.5-7.3L2 9.1l7-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 .6-5.3 4.6L18.2 21 12 17.3 5.8 21l1.5-7.3L2 9.1l7-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 .6-5.3 4.6L18.2 21 12 17.3 5.8 21l1.5-7.3L2 9.1l7-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 .6-5.3 4.6L18.2 21 12 17.3 5.8 21l1.5-7.3L2 9.1l7-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24" opacity=".35"><path d="m12 2 3 6.5 7 .6-5.3 4.6L18.2 21 12 17.3 5.8 21l1.5-7.3L2 9.1l7-.6z"/></svg></span><span style="font-size:12px;font-weight:700">4.6 · 128</span></div>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px"><span class="fpill" style="padding:5px 10px;font-size:11px">Family</span><span class="fpill" style="padding:5px 10px;font-size:11px">Property</span><span class="fpill" style="padding:5px 10px;font-size:11px">Civil</span></div>
+          <div class="p-card" style="display:flex;justify-content:space-between;font-size:12px"><div><div style="color:var(--muted);font-size:10.5px">Experience</div><b>12 years</b></div><div><div style="color:var(--muted);font-size:10.5px">Fee</div><b>৳1,500 / session</b></div><div><div style="color:var(--muted);font-size:10.5px;text-align:right">Status</div><b style="color:var(--primary)">● Online</b></div></div>
+        </div>
+        <div style="padding:12px 14px;border-top:1px solid var(--line);background:var(--surface)"><button class="btn btn-gold btn-block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Request consultation</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== ADMIN -->
+<section id="admin" class="wrap">
+  <div class="sec-head">
+    <span class="eyebrow">06 · H2 · Admin panel</span>
+    <h2 class="lang-en">Data-dense admin, built for content teams</h2><h2 class="lang-bn">কনটেন্ট টিমের জন্য অ্যাডমিন</h2>
+    <p class="lang-en">Desktop-first. KPI tiles, the verification queue, flagged-answer review and the coverage-gap report — the tools that keep answers grounded and the law current.</p>
+    <p class="lang-bn" style="font-family:var(--f-bn)">ডেস্কটপ-ফার্স্ট। কেপিআই টাইল, ভেরিফিকেশন সারি, ফ্ল্যাগড উত্তর পর্যালোচনা ও কভারেজ-গ্যাপ রিপোর্ট।</p>
+  </div>
+  <div class="screen-label"><span class="id">H2</span><h3 class="lang-en">Dashboard / KPIs</h3><h3 class="lang-bn">ড্যাশবোর্ড</h3><span class="tag">MVP · Admin</span></div>
+  <div class="browser">
+    <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>admin.juris.com.bd/dashboard</div></div>
+    <div class="admin">
+      <aside class="anav">
+        <div class="ab"><svg width="22" height="22" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="9" fill="var(--primary)"/><path d="M20 9v20M13 15h14" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg> Juris</div>
+        <div class="ni on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>Dashboard</div>
+        <div class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Users</div>
+        <div class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 4v5c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V7z"/></svg>Lawyer queue</div>
+        <div class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg>Law CMS</div>
+        <div class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 4v5c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg>AI review</div>
+        <div class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>Reports</div>
+        <div class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.5-2.3 1a7 7 0 0 0-1.7-1l-.3-2.5h-4l-.3 2.5a7 7 0 0 0-1.7 1l-2.3-1-2 3.5 2 1.5a7 7 0 0 0 0 2l-2 1.5 2 3.5 2.3-1a7 7 0 0 0 1.7 1l.3 2.5h4l.3-2.5a7 7 0 0 0 1.7-1l2.3 1 2-3.5-2-1.5c.1-.3.1-.7.1-1z"/></svg>Settings</div>
+      </aside>
+      <div class="amain">
+        <div class="ahead"><h3 class="lang-en">Overview</h3><h3 class="lang-bn">সারসংক্ষেপ</h3><span class="badge2fa">🔒 2FA session</span></div>
+        <div class="kpis">
+          <div class="kpi"><div class="kl"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/></svg>Total users</div><div class="kv mono">48,210</div><div class="kd up">▲ 6.2% this week</div></div>
+          <div class="kpi"><div class="kl"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Questions asked</div><div class="kv mono">12,904</div><div class="kd up">▲ 11% this week</div></div>
+          <div class="kpi"><div class="kl"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>Flagged answers</div><div class="kv mono">37</div><div class="kd warn">Needs review</div></div>
+          <div class="kpi"><div class="kl"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M3 20h5M12 4a4 4 0 0 1 0 8"/></svg>Coverage gaps</div><div class="kv mono">14</div><div class="kd down">▲ 3 new topics</div></div>
+        </div>
+        <div class="admin-2col">
+          <div class="card2">
+            <div class="c2h"><b class="lang-en">Questions per day</b><b class="lang-bn">দৈনিক প্রশ্ন</b><span class="lnk">Last 7 days</span></div>
+            <div class="chart">
+              <div class="col"><div class="b" style="height:52%"><span class="v">1.4k</span></div><div class="x">Sat</div></div>
+              <div class="col"><div class="b" style="height:64%"><span class="v">1.7k</span></div><div class="x">Sun</div></div>
+              <div class="col"><div class="b" style="height:48%"><span class="v">1.3k</span></div><div class="x">Mon</div></div>
+              <div class="col"><div class="b" style="height:78%"><span class="v">2.1k</span></div><div class="x">Tue</div></div>
+              <div class="col"><div class="b" style="height:70%"><span class="v">1.9k</span></div><div class="x">Wed</div></div>
+              <div class="col"><div class="b" style="height:88%"><span class="v">2.4k</span></div><div class="x">Thu</div></div>
+              <div class="col"><div class="b" style="height:96%"><span class="v">2.6k</span></div><div class="x">Fri</div></div>
+            </div>
+          </div>
+          <div class="card2">
+            <div class="c2h"><b class="lang-en">Verification queue</b><b class="lang-bn">যাচাই সারি</b><span class="lnk">View all</span></div>
+            <div class="queue">
+              <div class="qi"><span class="qa" style="background:#6C4BB6">MK</span><div><div class="qt">Adv. Md. Kamal</div><div class="qs">Bar reg. 2018 · Dhaka</div></div><span class="pillstat pending">Pending</span></div>
+              <div class="qi"><span class="qa" style="background:var(--primary)">NF</span><div><div class="qt">Adv. Nusrat F.</div><div class="qs">Bar reg. 2020 · Ctg</div></div><span class="pillstat pending">Pending</span></div>
+              <div class="qi"><span class="qa" style="background:var(--danger)">RH</span><div><div class="qt">Answer #4821 flagged</div><div class="qs">Low confidence · tenancy</div></div><span class="pillstat flag">Flag</span></div>
+              <div class="qi"><span class="qa" style="background:var(--gold-2)">SB</span><div><div class="qt">Adv. S. Barua</div><div class="qs">Bar reg. 2015 · Sylhet</div></div><span class="pillstat ok">Verified</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="card2" style="margin-top:16px">
+          <div class="c2h"><b class="lang-en">Coverage-gap report — popular questions with no law data</b><b class="lang-bn">কভারেজ-গ্যাপ রিপোর্ট</b><span class="lnk">Export CSV</span></div>
+          <table class="dt">
+            <thead><tr><th>Query</th><th>Asks (7d)</th><th>Category</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td class="u">“Ride-share driver accident liability”</td><td class="mono">218</td><td>Transport</td><td><span class="pillstat flag">No data</span></td></tr>
+              <tr><td class="u">“Online loan app harassment”</td><td class="mono">176</td><td>Cyber</td><td><span class="pillstat pending">Sourcing</span></td></tr>
+              <tr><td class="u">“Freelancer tax on foreign income”</td><td class="mono">142</td><td>Tax</td><td><span class="pillstat flag">No data</span></td></tr>
+              <tr><td class="u">“Tenant security deposit refund”</td><td class="mono">119</td><td>Property</td><td><span class="pillstat ok">Drafted</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== STATES -->
+<section id="states" class="wrap">
+  <div class="sec-head">
+    <span class="eyebrow">07 · State matrix</span>
+    <h2 class="lang-en">Every screen ships five states</h2><h2 class="lang-bn">প্রতিটি স্ক্রিনে পাঁচটি অবস্থা</h2>
+    <p class="lang-en">Default, loading (skeletons), empty, error and offline — designed, not left to chance.</p>
+    <p class="lang-bn" style="font-family:var(--f-bn)">ডিফল্ট, লোডিং, খালি, ত্রুটি ও অফলাইন — পরিকল্পিত, দৈবচয়ন নয়।</p>
+  </div>
+  <div class="grid states">
+    <div class="state">
+      <div class="sh"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.2-8.6"/></svg>Loading</div>
+      <div class="sb" style="align-items:stretch;justify-content:flex-start">
+        <div class="sk big"></div><div class="sk"></div><div class="sk w70"></div><div class="sk w45"></div>
+      </div>
+    </div>
+    <div class="state">
+      <div class="sh"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8"/></svg>Empty</div>
+      <div class="sb">
+        <div class="emptyico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></div>
+        <div class="st-t"><span class="lang-en">No bookmarks yet</span><span class="lang-bn">কোনো বুকমার্ক নেই</span></div>
+        <p class="lang-en">Save a section to find it here.</p><p class="lang-bn" style="font-family:var(--f-bn)">এখানে খুঁজতে ধারা সংরক্ষণ করুন।</p>
+        <button class="btn btn-ghost btn-sm"><span class="lang-en">Browse laws</span><span class="lang-bn">আইন দেখুন</span></button>
+      </div>
+    </div>
+    <div class="state">
+      <div class="sh"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Error</div>
+      <div class="sb">
+        <div class="emptyico" style="background:var(--danger-soft);color:var(--danger)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></div>
+        <div class="st-t"><span class="lang-en">Something went wrong</span><span class="lang-bn">কিছু একটা সমস্যা হয়েছে</span></div>
+        <p class="lang-en">We couldn't load this. Please retry.</p><p class="lang-bn" style="font-family:var(--f-bn)">লোড করা যায়নি। আবার চেষ্টা করুন।</p>
+        <button class="btn btn-primary btn-sm"><span class="lang-en">Retry</span><span class="lang-bn">পুনরায়</span></button>
+      </div>
+    </div>
+    <div class="state">
+      <div class="sh"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--warn)" stroke-width="2"><path d="M2 8a15 15 0 0 1 20 0M5 12a9 9 0 0 1 14 0M8.5 15.5a4 4 0 0 1 7 0M12 20h.01"/><path d="M2 2l20 20"/></svg>Offline</div>
+      <div class="sb">
+        <div class="emptyico" style="background:var(--gold-soft);color:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/><path d="M9 10h6"/></svg></div>
+        <div class="st-t"><span class="lang-en">You're offline</span><span class="lang-bn">আপনি অফলাইন</span></div>
+        <p class="lang-en">Saved laws are still readable.</p><p class="lang-bn" style="font-family:var(--f-bn)">সংরক্ষিত আইন এখনও পড়া যাবে।</p>
+        <button class="btn btn-ghost btn-sm"><span class="lang-en">Open downloads</span><span class="lang-bn">ডাউনলোড খুলুন</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== INVENTORY -->
+<section class="wrap">
+  <div class="sec-head">
+    <span class="eyebrow">08 · Delivery map</span>
+    <h2 class="lang-en">63 screens, sequenced for build</h2><h2 class="lang-bn">৬৩ স্ক্রিন, নির্মাণ ক্রমে</h2>
+    <p class="lang-en">Design system → Auth → AI Assistant → Law/Search → Home → Account → Admin, then Phase 2.</p>
+    <p class="lang-bn" style="font-family:var(--f-bn)">ডিজাইন সিস্টেম → অথ → এআই সহকারী → আইন → হোম → অ্যাকাউন্ট → অ্যাডমিন, তারপর ফেজ ২।</p>
+  </div>
+  <div class="grid inv">
+    <div class="invcard"><h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>A · Onboarding & Auth<span class="n">MVP · 8</span></h4>
+      <ul><li>Splash</li><li>Intro carousel</li><li>Sign up</li><li>OTP</li><li>Login</li><li>Reset</li><li>Language</li><li>Permissions</li></ul></div>
+    <div class="invcard"><h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>C · AI Assistant<span class="n">MVP · 7</span></h4>
+      <ul><li>Empty / prompts</li><li>Conversation</li><li>Cited expansion</li><li>Voice input</li><li>No-verified</li><li>History</li><li>Feedback</li></ul></div>
+    <div class="invcard"><h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg>D · Law DB & Search<span class="n">MVP · 7</span></h4>
+      <ul><li>Categories</li><li>Act listing</li><li>Search results</li><li>Filters</li><li>Law detail</li><li>Section detail</li><li>Bookmarks</li></ul></div>
+    <div class="invcard"><h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-2)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>E · Lawyer Marketplace<span class="n">P2 · 5</span></h4>
+      <ul><li class="p2">Directory</li><li class="p2">Profile</li><li class="p2">Request</li><li class="p2">Consult chat</li><li class="p2">Rate & review</li></ul></div>
+    <div class="invcard"><h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>H · Admin Panel<span class="n">MVP + P2 · 14</span></h4>
+      <ul><li>Login+2FA</li><li>Dashboard</li><li>Users</li><li class="p2">Verify queue</li><li>Law CMS</li><li>Import</li><li>AI review</li><li>Reports</li><li>Coverage gaps</li><li>CMS static</li><li>RBAC</li><li>Audit logs</li><li class="p2">Payments</li><li>Broadcast</li></ul></div>
+    <div class="invcard"><h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>J · System / Utility<span class="n">MVP · 7</span></h4>
+      <ul><li>Disclaimer</li><li>About/Privacy</li><li>Help/FAQ</li><li>Contact</li><li>Error states</li><li>Empty states</li><li>Maintenance</li></ul></div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- ===================================================== FOOTER -->
+<footer class="wrap">
+  <div class="foot">
+    <div class="fb">
+      <a class="brand" href="#top">
+        <svg class="mark" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="11" fill="var(--primary)"/><path d="M20 8v22M12 14h16M20 8l-8 6c0 4.4 3.6 7 8 7M20 8l8 6c0 4.4-3.6 7-8 7" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/><circle cx="20" cy="8" r="2.3" fill="var(--gold-soft)"/></svg>
+        <span>Juris<small>বাংলাদেশ আইন · NexaLance</small></span>
+      </a>
+      <p class="lang-en">A production-grade Bangladesh legal-tech platform. AI answers grounded strictly in verified law, a full searchable law database, and verified lawyers — bilingual and accessible by design.</p>
+      <p class="lang-bn" style="font-family:var(--f-bn)">একটি প্রোডাকশন-গ্রেড বাংলাদেশ লিগ্যাল-টেক প্ল্যাটফর্ম। যাচাইকৃত আইন ভিত্তিক এআই উত্তর, সম্পূর্ণ আইন ডেটাবেস ও যাচাইকৃত আইনজীবী।</p>
+    </div>
+    <div class="legal">
+      <div style="margin-bottom:10px;font-weight:700;color:var(--ink)">Ref NLX-LEGALTECH · v1.0 · 2026</div>
+      <a href="#">Disclaimer</a><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Help</a><br>
+      <div style="margin-top:14px;max-width:340px;font-size:11.5px">This design artifact presents general product information. It is not legal advice.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleTheme(){
+    var b=document.documentElement, dark=b.getAttribute('data-theme')==='dark';
+    b.setAttribute('data-theme', dark?'light':'dark');
+    document.getElementById('themeLabel').textContent = dark?'Dark':'Light';
+    var ic=document.getElementById('themeIcon');
+    ic.innerHTML = dark
+      ? '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'
+      : '<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/>';
+  }
+  function setLang(l){
+    document.body.setAttribute('data-lang', l);
+    document.documentElement.setAttribute('lang', l==='bn'?'bn':'en');
+    document.getElementById('en').setAttribute('aria-pressed', l==='en');
+    document.getElementById('bn').setAttribute('aria-pressed', l==='bn');
+  }
+  // simple tab interactivity in the gallery
+  document.querySelectorAll('.tabs, .lang-tabs').forEach(function(g){
+    g.addEventListener('click',function(e){
+      if(e.target.tagName!=='BUTTON')return;
+      g.querySelectorAll('button').forEach(function(b){b.classList.remove('on')});
+      e.target.classList.add('on');
+    });
+  });
+</script>
+</body>
+</html>
